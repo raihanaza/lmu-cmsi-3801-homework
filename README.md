@@ -5,7 +5,12 @@
 *Collaborators: Cecilia Zaragoza, Lauren Campbell, Raihana Zahra, Z Anderson*
 
 ### Description
-The say function utilizes recursive calls to chain multiple strings together into a final outputted phrase. If there are no input call, it will output an empty string. <br>
+1.
+2. The powers generator function is a generator that takes a base number and a limit, and yields the increasing powers of the base while the resulting number is less than or equal to the limit
+3. The say function utilizes recursive calls to chain multiple strings together into a final outputted phrase. If there are no input call, it will output an empty string. <br>
+4. 
+5. 
+
 +1 Homework point because Cecilia helped Dr. Toal in-class by pointing out how to call a function on a Vector object in Javascript on 9/11/24.
 
 
@@ -17,18 +22,18 @@ The say function utilizes recursive calls to chain multiple strings together int
 - Q5 (Quaternion table): Cecilia
   
 **Javascript**
-- Q1: Cecilia
-- Q2: Lauren
-- Q3: Raihana
-- Q4: Z
-- Q5: Lauren 
+- Q1 (first then lower case): Cecilia
+- Q2 (powers generator): Lauren
+- Q3 (say): Raihana
+- Q4 (line count): Z
+- Q5 (Quaternion class): Lauren 
 
 **Python**
-- Q1: Cecilia
-- Q2: Lauren
-- Q3: Raihana
-- Q4: Z
-- Q5: Raihana/Z
+- Q1 (first then lower case): Cecilia
+- Q2 (powers generator): Lauren
+- Q3 (say): Raihana
+- Q4 (line count): Z
+- Q5 (Quaternion class): Raihana/Z
 
 ## Homework 2 (Enterprise) Submission 
 
