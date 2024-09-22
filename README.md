@@ -1,10 +1,22 @@
-# Homework 1 (Scripting) Submission 
+# CMSI 3801 Homework
+
+## Homework 1 (Scripting) Submission 
 
 *Collaborators: Cecilia Zaragoza, Lauren Campbell, Raihana Zahra, Z Anderson*
 
 ### Description
-TBD
+- Q1 (first then lower case): 
+    - The first then lower case function takes a sequence of strings and a predicate as input, and the first string to match that predicate is returned in all lowercase letters. If there is no string matching that predicate or the sequence is empty, then nil (Lua), undefined (Javascript), or None (Python) is returned.
+- Q2 (powers generator):
+    - The powers generator function is a generator that takes a base number and a limit, and yields the increasing powers of the base while the resulting number is less than or equal to the limit
+- Q3 (say):  
+    - The say function utilizes recursive calls to chain multiple strings together into a final outputted phrase. If there are no input call, it will output an empty string. 
+- Q4 (line count): 
+    - The line count function reads a file line by line and returns how many lines satisfy these three requirements: lines that are not all whitespace, lines that do not have # as their first non-whitespace character, and lines that are not empty.
+- Q5 (Quaternion class or table): The Quaternion class creates the blueprint for creating Quaternion objects. Users can create, add, multiply, list the coefficients, calculate the conjugate, determine equality between conjugates, and print Quaternions as strings.
 
++1 Homework point because Cecilia helped Dr. Toal in-class by pointing out how to call a function on a Vector object in Javascript on 9/11/24.
+<br>
 
 **Lua**
 - Q1 (first then lower case): Cecilia
@@ -25,33 +37,33 @@ TBD
 - Q2: Lauren
 - Q3: Raihana
 - Q4: Z
-- Q5: ???
+- Q5: Raihana and Z
 
-# Homework 2 (Enterprise) Submission 
+## Homework 2 (Enterprise) Submission 
 
 TBD
 
 Java, Kotlin, Swift
 
-# Homework 3 (Theory) Submission 
+## Homework 3 (Theory) Submission 
 
 TBD
 
 TypeScript, OCaml, Hasketll
 
-# Homework 4 (Systems) Submission
+## Homework 4 (Systems) Submission
 
 TBD
 
 C, C++, Rust
 
-# Homework 5 (Concurrency) Submission
+## Homework 5 (Concurrency) Submission
 
 TBD
 
 Go
 
-## Instructions
+## Original Instructions for Reference
 
 Fork this repo for your homework submissions. Make sure your fork has a nice, descriptive name. Leaving the name as “lmu-cmsi-3801-template” is misleading, and keeping it indicates you are not taking sufficient pride in your work. After forking, **please replace the contents of this readme** file with information about your submissions, including the name(s) of the students, and a description of each assignment (as they are turned in).
 
