@@ -62,7 +62,6 @@ expect(say("😄🤗").and("💀👊🏾").phrase == "😄🤗 💀👊🏾")
 var greet = say("Hello").and("there")
 expect(greet.and("nice").and("person").phrase == "Hello there nice person")
 expect(greet.and("Swift").phrase == "Hello there Swift")
-print(greet.and("Swift").phrase)
 
 // suite("meaningfulLineCount");
 // await expectFailure(meaningfulLineCount("NoSuchFile.txt"))

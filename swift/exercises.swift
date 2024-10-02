@@ -18,15 +18,15 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
 // Write your first then lower case function here
 
 // Write your say function here
-class Sayer {
+struct Sayer {
     var phrase: String = ""
     init(_ phrase: String) {
         self.phrase = phrase
     }
 
-    func and(_ next: String) -> Sayer {
-        phrase = phrase + " " + next
-        return Sayer(phrase)
+    func and(_ word: String) -> Sayer {
+        // phrase = phrase + " " + word
+        return Sayer(phrase + " " + word)
     }
 }
 
