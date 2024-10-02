@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLSyntaxErrorException;
 
 public class Exercises {
     static Map<Integer, Long> change(long amount) {
@@ -23,6 +24,19 @@ public class Exercises {
     // Write your first then lower case function here
 
     // Write your say function here
+    static record Sayer(String phrase) {
+        Sayer and(String word) {
+            return new Sayer(phrase + " " + word);
+        }
+    }
+
+    public static Sayer say() {
+        return new Sayer("");
+    }
+
+    public static Sayer say(String word) {
+        return new Sayer(/*TODO: Supposed to add something else here*/ word);
+    }
 
     // Write your line count function here
 }
