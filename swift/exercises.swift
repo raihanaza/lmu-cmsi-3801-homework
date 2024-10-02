@@ -18,6 +18,21 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
 // Write your first then lower case function here
 
 // Write your say function here
+class Sayer {
+    var phrase: String = ""
+    init(_ phrase: String) {
+        self.phrase = phrase
+    }
+
+    func and(_ next: String) -> Sayer {
+        phrase = phrase + " " + next
+        return Sayer(phrase)
+    }
+}
+
+func say(_ phrase: String = "") -> Sayer {
+    return Sayer(phrase)
+}
 
 // Write your meaningfulLineCount function here
 
