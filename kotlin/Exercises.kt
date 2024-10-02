@@ -17,6 +17,22 @@ fun change(amount: Long): Map<Int, Long> {
 // Write your first then lower case function here
 
 // Write your say function here
+// TODO: need to see how to chain calls in kotlin
+class Sayer(phrase: String = "") {
+  var phrase: String
+
+  init {
+    this.phrase = phrase
+  }
+  
+  fun and(word: String): Sayer {
+    return Sayer(phrase.plus(" ").plus(word))
+  }
+}
+
+fun say(word: String = ""): Sayer {
+  return Sayer(word)
+}
 
 // Write your meaningfulLineCount function here
 
