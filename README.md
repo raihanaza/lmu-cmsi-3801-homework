@@ -26,18 +26,18 @@
 - Q5 (Quaternion table): Cecilia
   
 **Javascript**
-- Q1: Cecilia
-- Q2: Lauren
-- Q3: Raihana
-- Q4: Z
-- Q5: Lauren 
+- Q1 (first then lower case): Cecilia
+- Q2 (powers generator): Lauren
+- Q3 (say): Raihana
+- Q4 (line count): Z
+- Q5 (Quaternion class): Lauren 
 
 **Python**
-- Q1: Cecilia
-- Q2: Lauren
-- Q3: Raihana
-- Q4: Z
-- Q5: Raihana and Z
+- Q1 (first then lower case): Cecilia
+- Q2 (powers generator): Lauren
+- Q3 (say): Raihana
+- Q4 (line count): Z
+- Q5 (Quaternion class): Raihana/Z
 
 ## Homework 2 (Enterprise) Submission 
 
