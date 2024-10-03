@@ -90,7 +90,10 @@ record Quaternion(double a, double b, double c, double d) {
         quaternionString = quaternionString + getNumRemoveDigit(this.b, "i");
         quaternionString = quaternionString + getNumRemoveDigit(this.c, "j");
         quaternionString = quaternionString + getNumRemoveDigit(this.d, "k");
-        return quaternionString;
+        if (quaternionString.indexOf("+") == 0) {
+            quaternionString = quaternionString.substring(1);
+        }
+        return quaternionString.equals("") ? "0" : quaternionString;
     }
 
     private String getNumRemoveDigit(double coefficient, String basisVector) {
