@@ -28,9 +28,52 @@ fun firstThenLowerCase(strings: List<String?>, predicate: (String) -> Boolean): 
 =======
 >>>>>>> 05a0c89ad4880897f96c2571b8104e5382aef391
 // Write your say function here
+// TODO: need to see how to chain calls in kotlin
+data class Sayer(val phrase: String = "") {
+  fun and(word: String): Sayer {
+    return Sayer("$phrase $word")
+  }
+}
+
+fun say(word: String = ""): Sayer {
+  return Sayer(word)
+}
 
 // Write your meaningfulLineCount function here
 
 // Write your Quaternion data class here
 
 // Write your Binary Search Tree interface and implementing classes here
+sealed interface BinarySearchTree {
+  fun size(): Int
+  fun contains(value: String): Boolean
+  fun insert(value: String): BinarySearchTree
+
+  object Empty : BinarySearchTree {
+    override fun size(): Int = 0
+    override fun contains(value: String): Boolean = false
+    override fun insert(value: String): BinarySearchTree = Node(value, Empty, Empty)
+    override fun toString(): String = "()"
+  }
+
+  data class Node(private val value: String, private val left: BinarySearchTree, private val right: BinarySearchTree) : BinarySearchTree {
+    override fun size(): Int = 1 + left.size() + right.size()
+    override fun contains(value: String): Boolean = when {
+      value == this.value -> true
+      value < this.value -> left.contains(value)
+      else -> right.contains(value)
+    }
+
+    override fun insert(value: String): BinarySearchTree = when {
+      value == this.value -> this
+      value < this.value -> Node(this.value, left.insert(value), right)
+      else -> Node(this.value, left, right.insert(value))
+    }
+
+    override fun toString(): String  {
+      var leftNodeString: String = if (left.size() > 0) "${left.toString()}" else ""
+      var rightNodeString: String = if (right.size() > 0) "${right.toString()}" else ""
+      return "($leftNodeString$value$rightNodeString)"
+    }
+  }
+}

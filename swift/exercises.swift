@@ -26,6 +26,17 @@ func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> 
 }
 
 // Write your say function here
+struct Sayer {
+    let phrase: String
+
+    func and(_ word: String) -> Sayer {
+        return Sayer(phrase: phrase + " " + word)
+    }
+}
+
+func say(_ phrase: String = "") -> Sayer {
+    return Sayer(phrase: phrase)
+}
 
 // Write your meaningfulLineCount function here
 
