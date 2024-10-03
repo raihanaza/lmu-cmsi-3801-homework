@@ -101,7 +101,7 @@ fun main() {
     var t: BinarySearchTree = BinarySearchTree.Empty
     expect(t.size() == 0)
     expect(!t.contains("A"))
-    expect(t.toString() == "()")
+    expect(t.toString() == "()") 
     t = t.insert("G")
     expect(t.size() == 1)
     expect(t.contains("G"))

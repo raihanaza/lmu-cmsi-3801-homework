@@ -42,6 +42,7 @@ sealed interface BinarySearchTree {
     override fun size(): Int = 0
     override fun contains(value: String): Boolean = false
     override fun insert(value: String): BinarySearchTree = Node(value, Empty, Empty)
+    override fun toString(): String = "()"
   }
 
   data class Node(private val value: String, private val left: BinarySearchTree, private val right: BinarySearchTree) : BinarySearchTree {
@@ -57,5 +58,7 @@ sealed interface BinarySearchTree {
       value < this.value -> Node(this.value, left.insert(value), right)
       else -> Node(this.value, left, right.insert(value))
     }
+
+    override fun toString(): String = "(${left.toString()} $value ${right.toString()})"
   }
 }
