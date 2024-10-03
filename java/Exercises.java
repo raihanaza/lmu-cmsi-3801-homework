@@ -84,29 +84,32 @@ record Quaternion(double a, double b, double c, double d) {
 
     @Override
     public String toString() {
-        var sb = new StringBuilder();
-        if (a != 0) {
-            sb.append(a);
+        String quaternionString = "";
+        // -- get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
+        quaternionString = quaternionString + getNumRemoveDigit(this.a, "");
+        quaternionString = quaternionString + getNumRemoveDigit(this.b, "i");
+        quaternionString = quaternionString + getNumRemoveDigit(this.c, "j");
+        quaternionString = quaternionString + getNumRemoveDigit(this.d, "k");
+        return quaternionString;
+    }
+
+    private String getNumRemoveDigit(double coefficient, String basisVector) {
+        String coefficientFormatted = "";
+        if (coefficient > 1 && basisVector != "") {
+            coefficientFormatted = "+" + Double.toString(coefficient);
+        } else if (coefficient == 1 && basisVector != "") {
+            coefficientFormatted = "+";
+        } else if (coefficient == -1 && basisVector != "") {
+            coefficientFormatted = "-";
+        } else {
+            // number formatted is the number itself if number negative or if basisVector == ""
+            coefficientFormatted = Double.toString(coefficient);
         }
-        if (b != 0) {
-            if (sb.length() > 0) {
-                sb.append(b > 0 ? "+" : "-");
-            }
-            sb.append(Math.abs(b)).append("i");
-        }
-        if (c != 0) {
-            if (sb.length() > 0) {
-                sb.append(c > 0 ? "+" : "-");
-            }
-            sb.append(Math.abs(c)).append("j");
-        }
-        if (d != 0) {
-            if (sb.length() > 0) {
-                sb.append(d > 0 ? "+" : "-");
-            }
-            sb.append(Math.abs(d)).append("k");
-        }
-        return sb.toString();
+
+        if (coefficient != 0) {
+            return coefficientFormatted + basisVector;
+        } 
+        return "";
     }
 }
 
