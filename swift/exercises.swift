@@ -19,7 +19,7 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
 
 // Write your say function here
 struct Sayer {
-    var phrase: String = ""
+    private(set) var phrase: String = ""
     init(_ phrase: String) {
         self.phrase = phrase
     }
