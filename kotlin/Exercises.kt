@@ -60,8 +60,8 @@ sealed interface BinarySearchTree {
     }
 
     override fun toString(): String  {
-      var leftNodeString: String = if (left.size() > 0) "(${left.toString()})" else ""
-      var rightNodeString: String = if (right.size() > 0) "(${right.toString()})" else ""
+      var leftNodeString: String = if (left.size() > 0) "${left.toString()}" else ""
+      var rightNodeString: String = if (right.size() > 0) "${right.toString()}" else ""
       return "($leftNodeString$value$rightNodeString)"
     }
   }
