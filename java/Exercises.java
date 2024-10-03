@@ -24,12 +24,10 @@ public class Exercises {
     // Write your first then lower case function here
 
 public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
-    for (String s : strings) {
-        if(s != null && predicate.test(s)) {
-            return Optional.of(s.toLowerCase());
-        }
-    }
-    return Optional.empty();
+    return strings.stream() 
+        .filter(s -> s != null && predicate.test(s))
+        .map(String::toLowerCase)
+        .findFirst();
 }
     // Write your say function here
 
