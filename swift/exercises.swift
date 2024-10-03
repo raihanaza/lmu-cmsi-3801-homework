@@ -16,7 +16,14 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
 }
 
 // Write your first then lower case function here
-
+func firstThenLowerCase(_ strings: [String?],_ predicate: (String) -> Bool) -> String? {
+    for string in strings {
+        if let s = string, predicate(s) {
+            return s.lowercased()
+        }
+    }
+    return nil
+}
 // Write your say function here
 
 // Write your meaningfulLineCount function here
