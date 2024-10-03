@@ -37,6 +37,19 @@ fun say(word: String = ""): Sayer {
 }
 
 // Write your meaningfulLineCount function here
+// explicit naming for clarity: https://medium.com/@guruprasadhegde4/kotlin-lambda-expressions-bb9d4e15b6fc
+// trimming whitespace: https://www.baeldung.com/kotlin/string-remove-whitespace
+@Throws(IOException::class)
+fun meaningfulLineCount(filename: String): Long {
+    BufferedReader(FileReader(filename)).use { reader ->
+        return reader.lines()
+            .filter { line -> 
+                val trimmed = line.trim();
+                !trimmed.isBlank() && !trimmed.startsWith("#");
+            }
+            .count()
+    }
+}
 
 // Write your Quaternion data class here
 data class Quaternion (val a: Double = 0.0, val b: Double = 0.0, val c: Double = 0.0, val d: Double = 0.0) {
