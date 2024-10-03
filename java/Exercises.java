@@ -21,7 +21,16 @@ public class Exercises {
     }
 
     // Write your first then lower case function here
-
+public class FirstThenLowerCase {
+    public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
+        for (String s : strings) {
+            if(s != null && predicate.test(s)) {
+                return Optional.of(s.toLowerCase());
+            }
+        }
+        return Optional.empty();
+    }
+}
     // Write your say function here
 
     // Write your line count function here
