@@ -23,10 +23,7 @@ fun firstThenLowerCase(strings: List<String?>, predicate: (String) -> Boolean): 
     }
     return null
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 05a0c89ad4880897f96c2571b8104e5382aef391
 // Write your say function here
 // TODO: need to see how to chain calls in kotlin
 data class Sayer(val phrase: String = "") {
