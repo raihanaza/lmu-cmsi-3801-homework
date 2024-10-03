@@ -123,3 +123,69 @@ record Quaternion(double a, double b, double c, double d) {
 }
 
 // Write your BinarySearchTree sealed interface and its implementations here
+sealed interface BinarySearchTree permits Empty, Node {
+    int size();
+    boolean contains(String value);
+    BinarySearchTree insert(String value);
+}
+
+final record Empty() implements BinarySearchTree {
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public boolean contains(String value) {
+        return false;
+    }
+
+    @Override
+    public BinarySearchTree insert(String value) {
+        return new Node(value, this, this);
+    }
+
+    @Override
+    public String toString() {
+        return "()";
+    }
+}
+
+final class Node implements BinarySearchTree {
+    private final String value;
+    private final BinarySearchTree left;
+    private final BinarySearchTree right;
+
+    Node(String value, BinarySearchTree left, BinarySearchTree right) {
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
+
+    @Override
+    public int size() {
+        return left.size() + right.size()  + 1;
+    }
+
+    @Override
+    public boolean contains(String value ) {
+        return this.value.equals(value) || left.contains(value) || right.contains(value);
+    }
+
+    @Override 
+    public BinarySearchTree insert(String value) {
+        if (value.compareTo(this.value) < 0) {
+            return new Node(this.value, left.insert(value), right);
+        } else {
+            return new Node(this.value, left, right.insert(value));
+        }
+    }
+
+    @Override 
+    public String toString() {
+        String leftStr = left instanceof Empty ? "" : left.toString();
+        String rightStr = right instanceof Empty ? "" : right.toString();
+
+        return "(" + leftStr + value + rightStr + ")";
+    }
+}
