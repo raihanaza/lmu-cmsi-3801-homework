@@ -46,9 +46,10 @@ public class Exercises {
 record Quaternion(double a, double b, double c, double d) {
     // when do quaternion.something, that something has to be static
     public final static Quaternion ZERO = new Quaternion(0, 0, 0, 0);
-    public final static Quaternion I = new Quaternion(1, 0, 0, 0);
-    public final static Quaternion J = new Quaternion(0, 1, 0, 0);
-    public final static Quaternion K = new Quaternion(0, 0, 1, 0);
+    public final static Quaternion I = new Quaternion(0, 1, 0, 0);
+    public final static Quaternion J = new Quaternion(0, 0, 1, 0);
+    public final static Quaternion K = new Quaternion(0, 0, 0, 1);
+
     // learned how to do compact contructor from https://howtodoinjava.com/java/java-record-type/
     public Quaternion {
         if (Double.isNaN(a) || Double.isNaN(b) || Double.isNaN(c) || Double.isNaN(d)) {
