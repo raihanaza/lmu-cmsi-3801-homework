@@ -41,11 +41,11 @@ expectSuccess(change(10000000000005), [25: 400000000000, 10: 0, 5: 1, 1: 0])
 
 // Uncomment the following tests as you complete the exercises
 
-// suite("first_then_lower_case")
-// expect(firstThenLowerCase(of: [], satisfying: { $0 != "" }) == nil)
-// expect(firstThenLowerCase(of: ["", "A", "B"], satisfying: { $0 != "" }) == "a")
-// expect(firstThenLowerCase(of: ["", "A", "ABC"], satisfying: { $0.count > 3 }) == nil)
-// expect(firstThenLowerCase(of: ["ABC", "ABCD", "ABCDE"], satisfying: { $0.count > 3 }) == "abcd")
+suite("first_then_lower_case")
+expect(firstThenLowerCase(of: [], satisfying: { $0 != "" }) == nil)
+expect(firstThenLowerCase(of: ["", "A", "B"], satisfying: { $0 != "" }) == "a")
+expect(firstThenLowerCase(of: ["", "A", "ABC"], satisfying: { $0.count > 3 }) == nil)
+expect(firstThenLowerCase(of: ["ABC", "ABCD", "ABCDE"], satisfying: { $0.count > 3 }) == "abcd")
 
 // suite("say")
 // expect(say().phrase == "")
@@ -98,34 +98,34 @@ expectSuccess(change(10000000000005), [25: 400000000000, 10: 0, 5: 1, 1: 0])
 // expect("\(Quaternion(a: -1, b: -2, c: 0, d: 0))" == "-1.0-2.0i")
 // expect("\(Quaternion(a: 1, b: 0, c: -2, d: 5))" == "1.0-2.0j+5.0k")
 
-// suite("BinarySearchTree");
-// var t: BinarySearchTree = .empty
-// expect(t.size == 0);
-// expect(!t.contains("A"));
-// expect("\(t)" == "()")
-// t = t.insert("G");
-// expect(t.size == 1);
-// expect(t.contains("G"));
-// expect(!t.contains("A"));
-// expect("\(t)" == "(G)")
-// t = t.insert("B");
-// expect("\(t)" == "((B)G)")
-// t = t.insert("D");
-// expect("\(t)" == "((B(D))G)")
-// t = t.insert("H");
-// expect("\(t)" == "((B(D))G(H))")
-// t = t.insert("A");
-// expect("\(t)" == "(((A)B(D))G(H))")
-// t = t.insert("C");
-// t = t.insert("J");
-// expect(t.size == 7);
-// expect(t.contains("J"));
-// expect(!t.contains("Z"));
-// expect("\(t)" == "(((A)B((C)D))G(H(J)))")
-// // Test immutability
-// var t2: BinarySearchTree = t;
-// t2 = t2.insert("F");
-// expect(t2.size == 8);
-// expect(t.size == 7);
+suite("BinarySearchTree");
+var t: BinarySearchTree = .empty
+expect(t.size == 0);
+expect(!t.contains("A"));
+expect("\(t)" == "()")
+t = t.insert("G");
+expect(t.size == 1);
+expect(t.contains("G"));
+expect(!t.contains("A"));
+expect("\(t)" == "(G)")
+t = t.insert("B");
+expect("\(t)" == "((B)G)")
+t = t.insert("D");
+expect("\(t)" == "((B(D))G)")
+t = t.insert("H");
+expect("\(t)" == "((B(D))G(H))")
+t = t.insert("A");
+expect("\(t)" == "(((A)B(D))G(H))")
+t = t.insert("C");
+t = t.insert("J");
+expect(t.size == 7);
+expect(t.contains("J"));
+expect(!t.contains("Z"));
+expect("\(t)" == "(((A)B((C)D))G(H(J)))")
+// Test immutability
+var t2: BinarySearchTree = t;
+t2 = t2.insert("F");
+expect(t2.size == 8);
+expect(t.size == 7);
 
 print("\n\(passed) passed, \(failed) failed")
