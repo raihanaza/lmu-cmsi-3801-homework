@@ -19,19 +19,15 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
 
 // Write your say function here
 struct Sayer {
-    private(set) var phrase: String = ""
-    init(_ phrase: String) {
-        self.phrase = phrase
-    }
+    let phrase: String
 
     func and(_ word: String) -> Sayer {
-        // phrase = phrase + " " + word
-        return Sayer(phrase + " " + word)
+        return Sayer(phrase: phrase + " " + word)
     }
 }
 
 func say(_ phrase: String = "") -> Sayer {
-    return Sayer(phrase)
+    return Sayer(phrase: phrase)
 }
 
 // Write your meaningfulLineCount function here
