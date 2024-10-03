@@ -18,15 +18,9 @@ fun change(amount: Long): Map<Int, Long> {
 
 // Write your say function here
 // TODO: need to see how to chain calls in kotlin
-class Sayer(phrase: String = "") {
-  val phrase: String
-
-  init {
-    this.phrase = phrase
-  }
-
+data class Sayer(val phrase: String = "") {
   fun and(word: String): Sayer {
-    return Sayer(phrase.plus(" ").plus(word))
+    return Sayer("$phrase $word")
   }
 }
 
