@@ -1,8 +1,7 @@
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
 import java.io.IOException;
-import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 
 public class ExercisesTest {
@@ -58,15 +57,15 @@ public class ExercisesTest {
 
         // Uncomment the following tests as you complete the exercises
 
-        // suite("firstThenLowerCase");
-        // expect(Exercises.firstThenLowerCase(
-        //         List.of(), s -> !s.isEmpty()).isEmpty());
-        // expect(Exercises.firstThenLowerCase(
-        //         List.of("", "A", "B"), s -> !s.isEmpty()).get().equals("a"));
-        // expect(Exercises.firstThenLowerCase(
-        //         List.of("", "A", "ABC"), s -> s.length() > 3).isEmpty());
-        // expect(Exercises.firstThenLowerCase(
-        //         List.of("ABC", "ABCD", "ABCDE"), s -> s.length() > 3).get().equals("abcd"));
+        suite("firstThenLowerCase");
+        expect(Exercises.firstThenLowerCase(
+                List.of(), s -> !s.isEmpty()).isEmpty());
+        expect(Exercises.firstThenLowerCase(
+                List.of("", "A", "B"), s -> !s.isEmpty()).get().equals("a"));
+        expect(Exercises.firstThenLowerCase(
+                List.of("", "A", "ABC"), s -> s.length() > 3).isEmpty());
+        expect(Exercises.firstThenLowerCase(
+                List.of("ABC", "ABCD", "ABCDE"), s -> s.length() > 3).get().equals("abcd"));
 
         suite("say");
         expect(Exercises.say().phrase().equals(""));

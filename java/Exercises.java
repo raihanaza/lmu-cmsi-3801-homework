@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLSyntaxErrorException;
+import java.util.function.Function;
 
 public class Exercises {
     static Map<Integer, Long> change(long amount) {
@@ -24,6 +24,12 @@ public class Exercises {
 
     // Write your first then lower case function here
 
+public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
+    return strings.stream() 
+        .filter(s -> s != null && predicate.test(s))
+        .map(String::toLowerCase)
+        .findFirst();
+}
     // Write your say function here
     static record Sayer(String phrase) {
         Sayer and(String word) {

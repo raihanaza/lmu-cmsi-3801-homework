@@ -15,7 +15,18 @@ fun change(amount: Long): Map<Int, Long> {
 }
 
 // Write your first then lower case function here
+fun firstThenLowerCase(strings: List<String?>, predicate: (String) -> Boolean): String? {
+    for (s in strings) {
+        if (s != null && predicate(s)) {
+            return s.lowercase()
+        }
+    }
+    return null
+}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05a0c89ad4880897f96c2571b8104e5382aef391
 // Write your say function here
 // TODO: need to see how to chain calls in kotlin
 data class Sayer(val phrase: String = "") {
