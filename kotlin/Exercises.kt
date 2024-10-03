@@ -59,6 +59,10 @@ sealed interface BinarySearchTree {
       else -> Node(this.value, left, right.insert(value))
     }
 
-    override fun toString(): String = "(${left.toString()} $value ${right.toString()})"
+    override fun toString(): String  {
+      var leftNodeString: String = if (left.size() > 0) "(${left.toString()})" else ""
+      var rightNodeString: String = if (right.size() > 0) "(${right.toString()})" else ""
+      return "($leftNodeString$value$rightNodeString)"
+    }
   }
 }

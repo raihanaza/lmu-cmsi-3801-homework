@@ -107,6 +107,7 @@ fun main() {
     expect(t.contains("G"))
     expect(!t.contains("A"))
     expect(t.toString() == "(G)")
+    println("G tostring" + t.toString())
     t = t.insert("B")
     expect(t.toString() == "((B)G)")
     t = t.insert("D")
