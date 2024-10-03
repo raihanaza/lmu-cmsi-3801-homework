@@ -41,9 +41,38 @@
 
 ## Homework 2 (Enterprise) Submission 
 
-TBD
+### Description
+- Q1 (first then lower case): 
+    - The first then lower case function takes a sequence of strings and a predicate as input, and the first string to match that predicate is returned in all lowercase letters. If there is no string matching that predicate or the sequence is empty, then nil (Lua), undefined (Javascript), or None (Python) is returned.
+- Q2 (say):  
+    - The say function utilizes recursive calls to chain multiple strings together into a final outputted phrase. If there are no input call, it will output an empty string. 
+- Q3 (line count): 
+    - The line count function reads a file line by line and returns how many lines satisfy these three requirements: lines that are not all whitespace, lines that do not have # as their first non-whitespace character, and lines that are not empty.
+- Q4 (Quaternion class or table): 
+    - The Quaternion class creates the blueprint for creating Quaternion objects. Users can create, add, multiply, list the coefficients, calculate the conjugate, determine equality between conjugates, and print Quaternions as strings.
+- Q5 (Binary Search Tree):
+    - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup. 
 
-Java, Kotlin, Swift
+**Java**
+- Q1 (first then lowercase): Z
+- Q2 (say): Cecilia
+- Q3 (line count): Raihana
+- Q4 (Quaternion): Cecilia
+- Q5 (BST): Lauren
+
+**Kotlin**
+- Q1 (first then lowercase): Z
+- Q2 (say): Cecilia
+- Q3 (line count): Raihana
+- Q4 (Quaternion): Lauren
+- Q5 (BST): Cecilia
+
+**Swift**
+- Q1 (first then lowercase): Z
+- Q2 (say): Cecilia
+- Q3 (line count): Raihana
+- Q4 (Quaternion): Lauren
+- Q5 (BST): Raihana/Z
 
 ## Homework 3 (Theory) Submission 
 
