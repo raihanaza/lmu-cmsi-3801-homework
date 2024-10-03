@@ -33,3 +33,29 @@ fun say(word: String = ""): Sayer {
 // Write your Quaternion data class here
 
 // Write your Binary Search Tree interface and implementing classes here
+sealed interface BinarySearchTree {
+  fun size(): Int
+  fun contains(value: String): Boolean
+  fun insert(value: String): BinarySearchTree
+
+  object Empty : BinarySearchTree {
+    override fun size(): Int = 0
+    override fun contains(value: String): Boolean = false
+    override fun insert(value: String): BinarySearchTree = Node(value, Empty, Empty)
+  }
+
+  data class Node(private val value: String, private val left: BinarySearchTree, private val right: BinarySearchTree) : BinarySearchTree {
+    override fun size(): Int = 1 + left.size() + right.size()
+    override fun contains(value: String): Boolean = when {
+      value == this.value -> true
+      value < this.value -> left.contains(value)
+      else -> right.contains(value)
+    }
+
+    override fun insert(value: String): BinarySearchTree = when {
+      value == this.value -> this
+      value < this.value -> Node(this.value, left.insert(value), right)
+      else -> Node(this.value, left, right.insert(value))
+    }
+  }
+}
