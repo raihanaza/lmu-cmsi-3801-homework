@@ -59,9 +59,9 @@ fun main() {
     expect(greet.and("nice").and("person").phrase == "Hello there nice person")
     expect(greet.and("Swift").phrase == "Hello there Swift")
 
-    // suite("meaningfulLineCount")
-    // expectToThrow({ meaningfulLineCount("no-such-file.txt") }, IOException::class.java, "No such file")
-    // expect(meaningfulLineCount("../test-for-line-count.txt") == 5L)
+    suite("meaningfulLineCount")
+    expectToThrow({ meaningfulLineCount("no-such-file.txt") }, IOException::class.java, "No such file")
+    expect(meaningfulLineCount("../test-for-line-count.txt") == 5L)
 
     // suite("Quaternion")
     // val q = Quaternion(3.5, 2.25, -100.0, -1.25)
@@ -87,15 +87,15 @@ fun main() {
     // expect(Quaternion.J * Quaternion.K == Quaternion.I)
     // expect(Quaternion.J + Quaternion.I == Quaternion(0.0, 1.0, 1.0, 0.0))
 
-    // expect("${Quaternion.ZERO}" == "0")
-    // expect("${Quaternion.J}" == "j")
-    // expect("${Quaternion.K.conjugate()}" == "-k")
-    // expect("${Quaternion.J.conjugate() * Quaternion(2.0, 0.0, 0.0, 0.0)}" == "-2.0j")
-    // expect("${Quaternion.J + Quaternion.K}" == "j+k")
-    // expect("${Quaternion(0.0, -1.0, 0.0, 2.25)}" == "-i+2.25k")
-    // expect("${Quaternion(-20.0, -1.75, 13.0, -2.25)}" == "-20.0-1.75i+13.0j-2.25k")
-    // expect("${Quaternion(-1.0, -2.0, 0.0, 0.0)}" == "-1.0-2.0i")
-    // expect("${Quaternion(1.0, 0.0, -2.0, 5.0)}" == "1.0-2.0j+5.0k")
+    expect("${Quaternion.ZERO}" == "0")
+    expect("${Quaternion.J}" == "j")
+    expect("${Quaternion.K.conjugate()}" == "-k")
+    expect("${Quaternion.J.conjugate() * Quaternion(2.0, 0.0, 0.0, 0.0)}" == "-2.0j")
+    expect("${Quaternion.J + Quaternion.K}" == "j+k")
+    expect("${Quaternion(0.0, -1.0, 0.0, 2.25)}" == "-i+2.25k")
+    expect("${Quaternion(-20.0, -1.75, 13.0, -2.25)}" == "-20.0-1.75i+13.0j-2.25k")
+    expect("${Quaternion(-1.0, -2.0, 0.0, 0.0)}" == "-1.0-2.0i")
+    expect("${Quaternion(1.0, 0.0, -2.0, 5.0)}" == "1.0-2.0j+5.0k")
 
     suite("BinarySearchTree")
     var t: BinarySearchTree = BinarySearchTree.Empty
