@@ -15,7 +15,6 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
     return .success(counts)
 }
 
-// Write your first then lower case function here
 func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> Bool) -> String? {
     for string in strings {
         if predicate(string ?? "") {
@@ -25,7 +24,6 @@ func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> 
     return nil
 }
 
-// Write your say function here
 struct Sayer {
     let phrase: String
 
@@ -42,15 +40,12 @@ func say(_ phrase: String = "") -> Sayer {
 
 // Write your Quaternion struct here
 
-// Write your Binary Search Tree enum here
-// Write your Binary Search Tree enum here
 indirect enum BinarySearchTree: CustomStringConvertible {
     case empty
     case node(value: Character, left: BinarySearchTree, right: BinarySearchTree)
 
     // checks how many nodes are on the tree, recursive function
     // start at top and counts each going down 
-    // computed property
     var size: Int {
         switch self {
         case .empty:
@@ -72,15 +67,14 @@ indirect enum BinarySearchTree: CustomStringConvertible {
         }
     }
 
-    // contains checks the value of a node contained in the tree
     // go through each nodes top down, check if equal to each other, if get to bottom, return false if haven't hit true
     func contains(_ valueQuery: Character) -> Bool {
         switch self {
-        case .empty: // return false if node is empty
+        case .empty:
             return false
         case let .node(value, left, right):
             if valueQuery == value {
-                return true // return true when node vals are same 
+                return true
             } else if valueQuery < value {
                 return left.contains(valueQuery)
             } else {
