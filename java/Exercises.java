@@ -39,7 +39,7 @@ public static Optional<String> firstThenLowerCase(List<String> strings, Predicat
     }
 
     public static Sayer say(String word) {
-        return new Sayer(/*TODO: Supposed to add something else here*/ word);
+        return new Sayer(word);
     }
 
     // for file reader syntax: https://www.baeldung.com/java-filereader
@@ -57,7 +57,6 @@ public static Optional<String> firstThenLowerCase(List<String> strings, Predicat
 }
 
 record Quaternion(double a, double b, double c, double d) {
-    // when do quaternion.something, that something has to be static
     public final static Quaternion ZERO = new Quaternion(0, 0, 0, 0);
     public final static Quaternion I = new Quaternion(0, 1, 0, 0);
     public final static Quaternion J = new Quaternion(0, 0, 1, 0);
@@ -78,7 +77,6 @@ record Quaternion(double a, double b, double c, double d) {
         return new Quaternion(a - q.a, b - q.b, c - q.c, d - q.d);
     }
 
-    // times is an instance method
     Quaternion times(Quaternion q) {
         return new Quaternion(
                 a * q.a - b * q.b - c * q.c - d * q.d,
@@ -99,17 +97,17 @@ record Quaternion(double a, double b, double c, double d) {
     public String toString() {
         String quaternionString = "";
         // -- get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
-        quaternionString = quaternionString + getNumRemoveDigit(this.a, "");
-        quaternionString = quaternionString + getNumRemoveDigit(this.b, "i");
-        quaternionString = quaternionString + getNumRemoveDigit(this.c, "j");
-        quaternionString = quaternionString + getNumRemoveDigit(this.d, "k");
+        quaternionString = quaternionString + formatCoefficient(this.a, "");
+        quaternionString = quaternionString + formatCoefficient(this.b, "i");
+        quaternionString = quaternionString + formatCoefficient(this.c, "j");
+        quaternionString = quaternionString + formatCoefficient(this.d, "k");
         if (quaternionString.indexOf("+") == 0) {
             quaternionString = quaternionString.substring(1);
         }
         return quaternionString.equals("") ? "0" : quaternionString;
     }
 
-    private String getNumRemoveDigit(double coefficient, String basisVector) {
+    private String formatCoefficient(double coefficient, String basisVector) {
         String coefficientFormatted = "";
         if (coefficient > 1 && basisVector != "") {
             coefficientFormatted = "+" + Double.toString(coefficient);

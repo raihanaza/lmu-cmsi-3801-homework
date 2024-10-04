@@ -173,7 +173,6 @@ indirect enum BinarySearchTree: CustomStringConvertible {
         }
     }
 
-    // contains checks the value of a node contained in the tree
     // go through each nodes top down, check if equal to each other, if get to bottom, return false if haven't hit true
     func contains(_ valueQuery: Character) -> Bool {
         switch self {
