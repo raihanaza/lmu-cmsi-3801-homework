@@ -14,7 +14,6 @@ fun change(amount: Long): Map<Int, Long> {
     return counts
 }
 
-// Write your first then lower case function here
 fun firstThenLowerCase(strings: List<String?>, predicate: (String) -> Boolean): String? {
     for (s in strings) {
         if (s != null && predicate(s)) {
@@ -24,8 +23,6 @@ fun firstThenLowerCase(strings: List<String?>, predicate: (String) -> Boolean): 
     return null
 }
 
-// Write your say function here
-// TODO: need to see how to chain calls in kotlin
 data class Sayer(val phrase: String = "") {
   fun and(word: String): Sayer {
     return Sayer("$phrase $word")
@@ -50,7 +47,6 @@ fun meaningfulLineCount(filename: String): Long {
     }
 }
 
-// Write your Quaternion data class here
 data class Quaternion (val a: Double = 0.0, val b: Double = 0.0, val c: Double = 0.0, val d: Double = 0.0) {
     
     companion object {
@@ -120,7 +116,6 @@ data class Quaternion (val a: Double = 0.0, val b: Double = 0.0, val c: Double =
     }
 }
 
-// Write your Binary Search Tree interface and implementing classes here
 sealed interface BinarySearchTree {
   fun size(): Int
   fun contains(value: String): Boolean

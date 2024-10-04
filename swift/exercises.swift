@@ -15,7 +15,6 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
     return .success(counts)
 }
 
-// Write your first then lower case function here
 func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> Bool) -> String? {
     for string in strings {
         if predicate(string ?? "") {
@@ -25,7 +24,6 @@ func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> 
     return nil
 }
 
-// Write your say function here
 struct Sayer {
     let phrase: String
 
@@ -62,7 +60,6 @@ func meaningfulLineCount(_ path: String) async -> Result<Int, Error> {
 
 }
 
-// Write your Quaternion struct here
 struct Quaternion: CustomStringConvertible {
     let a: Double 
     let b: Double
