@@ -95,11 +95,10 @@ struct Quaternion: CustomStringConvertible {
             quaternionString = String(quaternionString.dropFirst());
         }
         return quaternionString == "" ? "0" : quaternionString;
-
-      
     }
 
-    func formatCoefficient(coefficient: Double, basisVector: String) -> String {
+    // private function to format quaternion coefficients to be returned in description
+    private func formatCoefficient(coefficient: Double, basisVector: String) -> String {
         var coefficientFormatted: String = "";
         if (coefficient > 1 && basisVector != "") {
             coefficientFormatted = "+" + String(coefficient);
