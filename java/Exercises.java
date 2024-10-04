@@ -1,13 +1,11 @@
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.function.Function;
 
 public class Exercises {
     static Map<Integer, Long> change(long amount) {
@@ -96,7 +94,7 @@ record Quaternion(double a, double b, double c, double d) {
     @Override
     public String toString() {
         String quaternionString = "";
-        // -- get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
+        // get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
         quaternionString = quaternionString + formatCoefficient(this.a, "");
         quaternionString = quaternionString + formatCoefficient(this.b, "i");
         quaternionString = quaternionString + formatCoefficient(this.c, "j");
@@ -116,7 +114,7 @@ record Quaternion(double a, double b, double c, double d) {
         } else if (coefficient == -1 && basisVector != "") {
             coefficientFormatted = "-";
         } else {
-            // number formatted is the number itself if number negative or if basisVector == ""
+            // number formatted is the number itself if number negative or if basisVector equals ""
             coefficientFormatted = Double.toString(coefficient);
         }
 

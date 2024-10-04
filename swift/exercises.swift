@@ -85,51 +85,38 @@ struct Quaternion: CustomStringConvertible {
     }
 
     var description: String {
-        var output = ""
-
-        if a != 0 {
-            output += "\(a)"
+        var quaternionString: String = "";
+        // get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
+        quaternionString += formatCoefficient(coefficient: self.a, basisVector:"");
+        quaternionString += formatCoefficient(coefficient: self.b, basisVector: "i");
+        quaternionString += formatCoefficient(coefficient: self.c, basisVector: "j");
+        quaternionString += formatCoefficient(coefficient: self.d, basisVector: "k");
+        if (quaternionString.hasPrefix("+")) {
+            quaternionString = String(quaternionString.dropFirst());
         }
+        return quaternionString == "" ? "0" : quaternionString;
 
-        if b != 0 {
-            if b == 1 {
-                output += (output.isEmpty ? "i" : "+i")
-            } else if b > 1 {
-                output += "+\(b)i"
-            } else if b == -1 {
-                output += "-i"
-            } else {
-                output += "\(b)i"
-            }
-        }
-
-        if c != 0 {
-            if c == 1 {
-                output += (output.isEmpty ? "j" : "+j")
-            } else if c > 1 {
-                output += "+\(c)j"
-            } else if c == -1 {
-                output += "-j"
-            } else {
-                output += "\(c)j"
-            }
-        }
-
-        if d != 0 {
-            if d == 1 {
-                output += (output.isEmpty ? "k" : "+k")
-            } else if d > 1 {
-                output += "+\(d)k"
-            } else if d == -1 {
-                output += "-k"
-            } else {
-                output += "\(d)k"
-            }
-        }
-
-        return output.isEmpty ? "0" : output
+      
     }
 
+    func formatCoefficient(coefficient: Double, basisVector: String) -> String {
+        var coefficientFormatted: String = "";
+        if (coefficient > 1 && basisVector != "") {
+            coefficientFormatted = "+" + String(coefficient);
+        } else if (coefficient == 1 && basisVector != "") {
+            coefficientFormatted = "+";
+        } else if (coefficient == -1 && basisVector != "") {
+            coefficientFormatted = "-";
+        } else {
+            // number formatted is the number itself if number negative or if basisVector equals ""
+            coefficientFormatted = String(coefficient);
+        }
+
+        if (coefficient != 0) {
+            return String(coefficientFormatted) + basisVector;
+        } 
+        return "";
+    }
 }
 
 func +(q1: Quaternion, q2: Quaternion) -> Quaternion {
