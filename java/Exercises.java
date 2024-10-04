@@ -22,15 +22,12 @@ public class Exercises {
         return counts;
     }
 
-    // Write your first then lower case function here
-
 public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
     return strings.stream() 
         .filter(s -> s != null && predicate.test(s))
         .map(String::toLowerCase)
         .findFirst();
 }
-    // Write your say function here
     static record Sayer(String phrase) {
         Sayer and(String word) {
             return new Sayer(phrase + " " + word);
@@ -45,7 +42,6 @@ public static Optional<String> firstThenLowerCase(List<String> strings, Predicat
         return new Sayer(/*TODO: Supposed to add something else here*/ word);
     }
 
-    // Write your line count function here
     // for file reader syntax: https://www.baeldung.com/java-filereader
     // for trim method to rid of whitespace: https://www.geeksforgeeks.org/java-string-trim-method-example/
     public static int meaningfulLineCount(String filename) throws IOException {
@@ -60,7 +56,6 @@ public static Optional<String> firstThenLowerCase(List<String> strings, Predicat
     }
 }
 
-// Write your Quaternion record class here
 record Quaternion(double a, double b, double c, double d) {
     // when do quaternion.something, that something has to be static
     public final static Quaternion ZERO = new Quaternion(0, 0, 0, 0);
@@ -134,7 +129,6 @@ record Quaternion(double a, double b, double c, double d) {
     }
 }
 
-// Write your BinarySearchTree sealed interface and its implementations here
 sealed interface BinarySearchTree permits Empty, Node {
     int size();
     boolean contains(String value);

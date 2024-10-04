@@ -15,7 +15,6 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
     return .success(counts)
 }
 
-// Write your first then lower case function here
 func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> Bool) -> String? {
     for string in strings {
         if predicate(string ?? "") {
@@ -25,7 +24,6 @@ func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> 
     return nil
 }
 
-// Write your say function here
 struct Sayer {
     let phrase: String
 
@@ -38,32 +36,28 @@ func say(_ phrase: String = "") -> Sayer {
     return Sayer(phrase: phrase)
 }
 
-// Write your meaningfulLineCount function here
 func meaningfulLineCount(_ path: String) async -> Result<Int, Error> {
     // for using result: // https://www.hackingwithswift.com/articles/161/how-to-use-result-in-swift
     do {
-        // read file async
         let fileURL = URL(fileURLWithPath: path)
         var lineCount = 0
 
         for try await line in fileURL.lines {
             let trimmed = line.trimmingCharacters(in: .whitespaces) // for trimming text: https://www.hackingwithswift.com/example-code/strings/how-to-trim-whitespace-in-a-string
 
-            // skip if line is empty or first nonwhitespace is #
             if trimmed.isEmpty || trimmed.first == "#" {
                 continue
         }
         lineCount += 1
     }
     return .success(lineCount) 
-    
+
     } catch {
         return .failure(NoSuchFileError())
     }
 
 }
 
-// Write your Quaternion struct here
 struct Quaternion: CustomStringConvertible {
     let a: Double 
     let b: Double
@@ -153,14 +147,11 @@ func == (q1: Quaternion, q2: Quaternion) -> Bool {
     return (q1.a == q2.a) && (q1.b == q2.b) && (q1.c == q2.c) && (q1.d == q2.d)
 }
 
-// Write your Binary Search Tree enum here
 indirect enum BinarySearchTree: CustomStringConvertible {
     case empty
     case node(value: Character, left: BinarySearchTree, right: BinarySearchTree)
 
-    // checks how many nodes are on the tree, recursive function
-    // start at top and counts each going down 
-    // computed property
+    // checks how many nodes are on the tree, recursive function that starts at top and counts each going down 
     var size: Int {
         switch self {
         case .empty:
@@ -186,11 +177,11 @@ indirect enum BinarySearchTree: CustomStringConvertible {
     // go through each nodes top down, check if equal to each other, if get to bottom, return false if haven't hit true
     func contains(_ valueQuery: Character) -> Bool {
         switch self {
-        case .empty: // return false if node is empty
+        case .empty:
             return false
         case let .node(value, left, right):
             if valueQuery == value {
-                return true // return true when node vals are same 
+                return true
             } else if valueQuery < value {
                 return left.contains(valueQuery)
             } else {
