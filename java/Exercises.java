@@ -24,7 +24,6 @@ public class Exercises {
 
     // Write your say function here
 
-    // Write your line count function here
     // for file reader syntax: https://www.baeldung.com/java-filereader
     // for trim method to rid of whitespace: https://www.geeksforgeeks.org/java-string-trim-method-example/
     public static int meaningfulLineCount(String filename) throws IOException {

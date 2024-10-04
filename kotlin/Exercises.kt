@@ -18,7 +18,6 @@ fun change(amount: Long): Map<Int, Long> {
 
 // Write your say function here
 
-// Write your meaningfulLineCount function here
 // explicit naming for clarity: https://medium.com/@guruprasadhegde4/kotlin-lambda-expressions-bb9d4e15b6fc
 // trimming whitespace: https://www.baeldung.com/kotlin/string-remove-whitespace
 @Throws(IOException::class)

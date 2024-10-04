@@ -19,7 +19,6 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
 
 // Write your say function here
 
-// Write your meaningfulLineCount function here
 func meaningfulLineCount(_ path: String) async -> Result<Int, Error> {
     // for using result: // https://www.hackingwithswift.com/articles/161/how-to-use-result-in-swift
     do {
@@ -46,7 +45,6 @@ func meaningfulLineCount(_ path: String) async -> Result<Int, Error> {
 
 // Write your Quaternion struct here
 
-// Write your Binary Search Tree enum here
 indirect enum BinarySearchTree: CustomStringConvertible {
     case empty
     case node(value: Character, left: BinarySearchTree, right: BinarySearchTree)
