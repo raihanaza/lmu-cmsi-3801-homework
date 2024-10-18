@@ -19,7 +19,6 @@ export function change(amount: bigint): Map<bigint, bigint> {
 
 // Write your line count function here
 
-// Write your shape type and associated functions here
 interface Sphere { 
   kind: "Sphere"
   radius: number
