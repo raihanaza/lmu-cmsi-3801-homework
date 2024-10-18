@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Redundant bracket" #-}
 {-# HLINT ignore "Move brackets to avoid $" #-}
+{-# HLINT ignore "Use let" #-}
 import Data.Map (Map, toDescList)
 import Data.Text (toLower, pack, unpack)
 import Text.Printf (printf)
