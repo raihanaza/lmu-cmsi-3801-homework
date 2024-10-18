@@ -67,7 +67,6 @@ try (meaningful_line_count("no-such-file.txt") |> fun _ -> expect false) with
 expect(meaningful_line_count("../test-for-line-count.txt") == 5);;
 *)
 
-
 suite "shape";;
 let s1 = Sphere 5.0 in
 let s2 = Box (3.0, 4.0, 5.0) in (
@@ -76,7 +75,6 @@ let s2 = Box (3.0, 4.0, 5.0) in (
   expect (surface_area s1 = 314.1592653589793);
   expect (surface_area s2 = 94.0);
 );;
-
 
 (*
 suite "binary search tree";;
