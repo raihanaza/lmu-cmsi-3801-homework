@@ -20,5 +20,36 @@ export function change(amount: bigint): Map<bigint, bigint> {
 // Write your line count function here
 
 // Write your shape type and associated functions here
+interface Sphere { 
+  kind: "Sphere"
+  radius: number
+}
+
+interface Box {
+  kind: "Box"
+  width: number
+  length: number 
+  depth: number
+}
+
+export type Shape = Sphere | Box
+
+export function surfaceArea (shape: Shape): number {
+  switch (shape.kind) {
+    case "Sphere":
+      return 4 * Math.PI * shape.radius ** 2;
+    case "Box":
+      return 2 * (shape.width * shape.length + shape.width * shape.depth + shape.length * shape.depth);
+  }
+}
+
+export function volume (shape: Shape): number {
+  switch (shape.kind) {
+    case "Sphere":
+      return (4 / 3) * Math.PI * shape.radius ** 3
+    case "Box":
+      return (shape.length * shape.width * shape.depth)
+  }
+}
 
 // Write your binary search tree implementation here
