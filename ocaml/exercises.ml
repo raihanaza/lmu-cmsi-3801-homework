@@ -18,7 +18,6 @@ let change amount =
 
 (* Write your line count function here *)
 
-(* Write your shape type and associated functions here *)
 type shape =
   | Sphere of float
   | Box of float * float * float
