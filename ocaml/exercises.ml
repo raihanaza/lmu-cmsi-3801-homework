@@ -15,7 +15,12 @@ let change amount =
 (* Write your first then apply function here *)
 
 (* Write your powers generator here *)
-
+let rec powers_generator base limit =
+  let rec aux power acc =
+    if power > limit then List.rev acc
+    else aux (power * base) (power :: acc)
+  in
+  aux 1 []
 (* Write your line count function here *)
 
 (* Write your shape type and associated functions here *)

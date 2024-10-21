@@ -16,7 +16,13 @@ export function change(amount: bigint): Map<bigint, bigint> {
 // Write your first then apply function here
 
 // Write your powers generator here
-
+function* powersGenerator(base: bigint, limit: bigint) {
+  let power: bigint = 1n;
+  while (power <= limit) {
+      yield power;
+      power = power * base;
+  }
+}
 // Write your line count function here
 
 // Write your shape type and associated functions here

@@ -23,6 +23,8 @@ change amount
 -- Write your first then apply function here
 
 -- Write your infinite powers generator here
+powersGenerator :: (Integral a) => a -> a -> [a]
+powersGenerator base limit = takeWhile (<= limit) (iterate (* base) 1)
 
 -- Write your line count function here
 
