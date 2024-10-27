@@ -15,7 +15,6 @@ func change(_ amount: Int) -> Result<[Int:Int], NegativeAmountError> {
     return .success(counts)
 }
 
-// Write your first then lower case function here
 func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> Bool) -> String? {
     for string in strings {
         if predicate(string ?? "") {
@@ -25,7 +24,6 @@ func firstThenLowerCase(of strings: [String?],satisfying predicate: (String) -> 
     return nil
 }
 
-// Write your say function here
 struct Sayer {
     let phrase: String
 
@@ -38,9 +36,28 @@ func say(_ phrase: String = "") -> Sayer {
     return Sayer(phrase: phrase)
 }
 
-// Write your meaningfulLineCount function here
+func meaningfulLineCount(_ path: String) async -> Result<Int, Error> {
+    // for using result: // https://www.hackingwithswift.com/articles/161/how-to-use-result-in-swift
+    do {
+        let fileURL = URL(fileURLWithPath: path)
+        var lineCount = 0
 
-// Write your Quaternion struct here
+        for try await line in fileURL.lines {
+            let trimmed = line.trimmingCharacters(in: .whitespaces) // for trimming text: https://www.hackingwithswift.com/example-code/strings/how-to-trim-whitespace-in-a-string
+
+            if trimmed.isEmpty || trimmed.first == "#" {
+                continue
+        }
+        lineCount += 1
+    }
+    return .success(lineCount) 
+
+    } catch {
+        return .failure(NoSuchFileError())
+    }
+
+}
+
 struct Quaternion: CustomStringConvertible {
     let a: Double 
     let b: Double
@@ -68,51 +85,37 @@ struct Quaternion: CustomStringConvertible {
     }
 
     var description: String {
-        var output = ""
-
-        if a != 0 {
-            output += "\(a)"
+        var quaternionString: String = "";
+        // get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
+        quaternionString += formatCoefficient(coefficient: self.a, basisVector:"");
+        quaternionString += formatCoefficient(coefficient: self.b, basisVector: "i");
+        quaternionString += formatCoefficient(coefficient: self.c, basisVector: "j");
+        quaternionString += formatCoefficient(coefficient: self.d, basisVector: "k");
+        if (quaternionString.hasPrefix("+")) {
+            quaternionString = String(quaternionString.dropFirst());
         }
-
-        if b != 0 {
-            if b == 1 {
-                output += (output.isEmpty ? "i" : "+i")
-            } else if b > 1 {
-                output += "+\(b)i"
-            } else if b == -1 {
-                output += "-i"
-            } else {
-                output += "\(b)i"
-            }
-        }
-
-        if c != 0 {
-            if c == 1 {
-                output += (output.isEmpty ? "j" : "+j")
-            } else if c > 1 {
-                output += "+\(c)j"
-            } else if c == -1 {
-                output += "-j"
-            } else {
-                output += "\(c)j"
-            }
-        }
-
-        if d != 0 {
-            if d == 1 {
-                output += (output.isEmpty ? "k" : "+k")
-            } else if d > 1 {
-                output += "+\(d)k"
-            } else if d == -1 {
-                output += "-k"
-            } else {
-                output += "\(d)k"
-            }
-        }
-
-        return output.isEmpty ? "0" : output
+        return quaternionString == "" ? "0" : quaternionString;
     }
 
+    // private function to format quaternion coefficients to be returned in description
+    private func formatCoefficient(coefficient: Double, basisVector: String) -> String {
+        var coefficientFormatted: String = "";
+        if (coefficient > 1 && basisVector != "") {
+            coefficientFormatted = "+" + String(coefficient);
+        } else if (coefficient == 1 && basisVector != "") {
+            coefficientFormatted = "+";
+        } else if (coefficient == -1 && basisVector != "") {
+            coefficientFormatted = "-";
+        } else {
+            // number formatted is the number itself if number negative or if basisVector equals ""
+            coefficientFormatted = String(coefficient);
+        }
+
+        if (coefficient != 0) {
+            return String(coefficientFormatted) + basisVector;
+        } 
+        return "";
+    }
 }
 
 func +(q1: Quaternion, q2: Quaternion) -> Quaternion {
@@ -130,15 +133,11 @@ func == (q1: Quaternion, q2: Quaternion) -> Bool {
     return (q1.a == q2.a) && (q1.b == q2.b) && (q1.c == q2.c) && (q1.d == q2.d)
 }
 
-// Write your Binary Search Tree enum here
-// Write your Binary Search Tree enum here
 indirect enum BinarySearchTree: CustomStringConvertible {
     case empty
     case node(value: Character, left: BinarySearchTree, right: BinarySearchTree)
 
-    // checks how many nodes are on the tree, recursive function
-    // start at top and counts each going down 
-    // computed property
+    // checks how many nodes are on the tree, recursive function that starts at top and counts each going down 
     var size: Int {
         switch self {
         case .empty:
@@ -160,15 +159,14 @@ indirect enum BinarySearchTree: CustomStringConvertible {
         }
     }
 
-    // contains checks the value of a node contained in the tree
     // go through each nodes top down, check if equal to each other, if get to bottom, return false if haven't hit true
     func contains(_ valueQuery: Character) -> Bool {
         switch self {
-        case .empty: // return false if node is empty
+        case .empty:
             return false
         case let .node(value, left, right):
             if valueQuery == value {
-                return true // return true when node vals are same 
+                return true
             } else if valueQuery < value {
                 return left.contains(valueQuery)
             } else {

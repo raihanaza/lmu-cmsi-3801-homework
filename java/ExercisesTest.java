@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -84,12 +85,12 @@ public class ExercisesTest {
         expect(greet.and("nice").and("person").phrase().equals("Hello there nice person"));
         expect(greet.and("Swift").phrase().equals("Hello there Swift"));
 
-        // suite("meaningfulLineCount");
-        // expectToThrow(
-        //     () -> Exercises.meaningfulLineCount("no-such-file.txt"),
-        //     FileNotFoundException.class,
-        //     "No such file");
-        // expect(Exercises.meaningfulLineCount("../test-for-line-count.txt") == 5);
+        suite("meaningfulLineCount");
+        expectToThrow(
+            () -> Exercises.meaningfulLineCount("no-such-file.txt"),
+            FileNotFoundException.class,
+            "No such file");
+        expect(Exercises.meaningfulLineCount("../test-for-line-count.txt") == 5);
 
         suite("Quaternion");
         expectToThrow(() -> new Quaternion(Double.NaN, 0, 0, 0),

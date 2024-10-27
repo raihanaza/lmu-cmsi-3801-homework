@@ -1,13 +1,11 @@
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.function.Function;
 
 public class Exercises {
     static Map<Integer, Long> change(long amount) {
@@ -22,15 +20,12 @@ public class Exercises {
         return counts;
     }
 
-    // Write your first then lower case function here
-
-public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
-    return strings.stream() 
-        .filter(s -> s != null && predicate.test(s))
-        .map(String::toLowerCase)
-        .findFirst();
-}
-    // Write your say function here
+    public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
+        return strings.stream() 
+            .filter(s -> s != null && predicate.test(s))
+            .map(String::toLowerCase)
+            .findFirst();
+    }
     static record Sayer(String phrase) {
         Sayer and(String word) {
             return new Sayer(phrase + " " + word);
@@ -42,15 +37,24 @@ public static Optional<String> firstThenLowerCase(List<String> strings, Predicat
     }
 
     public static Sayer say(String word) {
-        return new Sayer(/*TODO: Supposed to add something else here*/ word);
+        return new Sayer(word);
     }
 
-    // Write your line count function here
+    // for file reader syntax: https://www.baeldung.com/java-filereader
+    // for trim method to rid of whitespace: https://www.geeksforgeeks.org/java-string-trim-method-example/
+    public static int meaningfulLineCount(String filename) throws IOException {
+        try (var reader = new BufferedReader(new FileReader(filename))) {
+            return (int) reader.lines()
+                .filter(line -> {
+                    String trimmed = line.trim();
+                    return !trimmed.isBlank() && !trimmed.startsWith("#");
+                })
+                .count();
+        }
+    }
 }
 
-// Write your Quaternion record class here
 record Quaternion(double a, double b, double c, double d) {
-    // when do quaternion.something, that something has to be static
     public final static Quaternion ZERO = new Quaternion(0, 0, 0, 0);
     public final static Quaternion I = new Quaternion(0, 1, 0, 0);
     public final static Quaternion J = new Quaternion(0, 0, 1, 0);
@@ -71,7 +75,6 @@ record Quaternion(double a, double b, double c, double d) {
         return new Quaternion(a - q.a, b - q.b, c - q.c, d - q.d);
     }
 
-    // times is an instance method
     Quaternion times(Quaternion q) {
         return new Quaternion(
                 a * q.a - b * q.b - c * q.c - d * q.d,
@@ -91,18 +94,18 @@ record Quaternion(double a, double b, double c, double d) {
     @Override
     public String toString() {
         String quaternionString = "";
-        // -- get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
-        quaternionString = quaternionString + getNumRemoveDigit(this.a, "");
-        quaternionString = quaternionString + getNumRemoveDigit(this.b, "i");
-        quaternionString = quaternionString + getNumRemoveDigit(this.c, "j");
-        quaternionString = quaternionString + getNumRemoveDigit(this.d, "k");
+        // get formatted coefficient and remove 0, 1.0, or -1.0 so that either value doesn't show, just coefficient, or just negative coefficient
+        quaternionString = quaternionString + formatCoefficient(this.a, "");
+        quaternionString = quaternionString + formatCoefficient(this.b, "i");
+        quaternionString = quaternionString + formatCoefficient(this.c, "j");
+        quaternionString = quaternionString + formatCoefficient(this.d, "k");
         if (quaternionString.indexOf("+") == 0) {
             quaternionString = quaternionString.substring(1);
         }
         return quaternionString.equals("") ? "0" : quaternionString;
     }
 
-    private String getNumRemoveDigit(double coefficient, String basisVector) {
+    private String formatCoefficient(double coefficient, String basisVector) {
         String coefficientFormatted = "";
         if (coefficient > 1 && basisVector != "") {
             coefficientFormatted = "+" + Double.toString(coefficient);
@@ -111,7 +114,7 @@ record Quaternion(double a, double b, double c, double d) {
         } else if (coefficient == -1 && basisVector != "") {
             coefficientFormatted = "-";
         } else {
-            // number formatted is the number itself if number negative or if basisVector == ""
+            // number formatted is the number itself if number negative or if basisVector equals ""
             coefficientFormatted = Double.toString(coefficient);
         }
 
@@ -122,7 +125,6 @@ record Quaternion(double a, double b, double c, double d) {
     }
 }
 
-// Write your BinarySearchTree sealed interface and its implementations here
 sealed interface BinarySearchTree permits Empty, Node {
     int size();
     boolean contains(String value);

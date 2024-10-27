@@ -14,21 +14,10 @@ fun change(amount: Long): Map<Int, Long> {
     return counts
 }
 
-// Write your first then lower case function here
-fun firstThenLowerCase(strings: List<String?>, predicate: (String) -> Boolean): String? {
-    for (s in strings) {
-        if (s != null && predicate(s)) {
-            return s.lowercase()
-        }
-    }
-    return null
+fun firstThenLowerCase(strings: List<String>, predicate: (String) -> Boolean): String? {
+    return strings.firstOrNull(predicate)?.lowercase()
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 05a0c89ad4880897f96c2571b8104e5382aef391
-// Write your say function here
-// TODO: need to see how to chain calls in kotlin
 data class Sayer(val phrase: String = "") {
   fun and(word: String): Sayer {
     return Sayer("$phrase $word")
@@ -39,9 +28,20 @@ fun say(word: String = ""): Sayer {
   return Sayer(word)
 }
 
-// Write your meaningfulLineCount function here
+// explicit naming for clarity: https://medium.com/@guruprasadhegde4/kotlin-lambda-expressions-bb9d4e15b6fc
+// trimming whitespace: https://www.baeldung.com/kotlin/string-remove-whitespace
+@Throws(IOException::class)
+fun meaningfulLineCount(filename: String): Long {
+    BufferedReader(FileReader(filename)).use { reader ->
+        return reader.lines()
+            .filter { line -> 
+                val trimmed = line.trim();
+                !trimmed.isBlank() && !trimmed.startsWith("#");
+            }
+            .count()
+    }
+}
 
-// Write your Quaternion data class here
 data class Quaternion (val a: Double = 0.0, val b: Double = 0.0, val c: Double = 0.0, val d: Double = 0.0) {
     
     companion object {
@@ -111,7 +111,6 @@ data class Quaternion (val a: Double = 0.0, val b: Double = 0.0, val c: Double =
     }
 }
 
-// Write your Binary Search Tree interface and implementing classes here
 sealed interface BinarySearchTree {
   fun size(): Int
   fun contains(value: String): Boolean
