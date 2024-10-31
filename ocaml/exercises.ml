@@ -16,8 +16,21 @@ let change amount =
 
 (* Write your powers generator here *)
 
-(* Write your line count function here *)
-
+let meaningful_line_count filename = 
+  let file = open_in filename in
+  let finally () = close_in file in
+  let is_meaningful line = 
+    let trimmed = String.trim line in
+    trimmed <> "" && not (String.starts_with ~prefix:"#" trimmed)
+  in
+  let rec count_lines count = 
+    match input_line file with
+    | line ->
+      let new_count = if is_meaningful line then count + 1 else count in count_lines new_count
+    | exception End_of_file -> 
+      count
+  in Fun.protect ~finally (fun () -> count_lines 0)
+  
 (* Write your shape type and associated functions here *)
 
 (* Write your binary search tree implementation here *)
