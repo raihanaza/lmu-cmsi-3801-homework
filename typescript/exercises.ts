@@ -33,3 +33,79 @@ export async function meaningfulLineCount(fileName: string): Promise<number> {
 // Write your shape type and associated functions here
 
 // Write your binary search tree implementation here
+export interface BinarySearchTree<T> {
+  size(): number
+  insert(value: T): BinarySearchTree<T>
+  contains(value: T): boolean
+  inorder(): Iterable<T>
+}
+
+export class Empty<T> implements BinarySearchTree<T> {
+  size(): number {
+    return 0
+  }
+
+  insert(value: T): BinarySearchTree<T> {
+    return new Node(value, this, this)
+  }
+
+  contains(value: T): boolean {
+    return false
+  }
+
+  inorder(): Iterable<T> {
+    return []
+  }
+
+  toString(): string {
+    return "()"
+  }
+}
+
+export class Node<T> implements BinarySearchTree<T> {
+  private value: T;
+  private left: BinarySearchTree<T>
+  private right: BinarySearchTree<T>
+
+  constructor(value: T, left: BinarySearchTree<T>, right: BinarySearchTree<T>) {
+    this.value = value
+    this.left = left
+    this.right = right
+  }
+
+  size(): number {
+    return this.left.size() + this.right.size() + 1
+  }
+
+  insert(value: T): BinarySearchTree<T> {
+    if (value < this.value) {
+      return new Node(this.value, this.left.insert(value), this.right)
+    } else if (value > this.value) {
+      return new Node(this.value, this.left, this.right.insert(value))
+    } else {
+      return this
+    }
+  }
+
+  contains(value: T): boolean {
+    return this.value === value || this.left.contains(value) || this.right.contains(value);
+  }
+
+  *inorder(): Iterable<T> {
+    if (this.left) {
+      yield* this.left.inorder()
+    }
+    
+    if (this.value) {
+      yield this.value
+    }
+
+    if (this.right) {
+      yield* this.right.inorder()
+    }
+  }
+
+  toString(): string {
+    return ("(" + this.left + this.value + this.right + ")").replace(/\(\)/g, '');
+  }
+}
