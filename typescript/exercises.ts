@@ -17,7 +17,18 @@ export function change(amount: bigint): Map<bigint, bigint> {
 
 // Write your powers generator here
 
-// Write your line count function here
+export async function meaningfulLineCount(fileName: string): Promise<number> {
+  const file = await open(fileName, "r")
+  let count = 0
+
+  for await (const line of file.readLines()) {
+    const newLine = line.trim()
+    if (!(newLine.length == 0 || newLine[0] == "#")) {
+      count += 1
+    }
+  }
+  return count
+}
 
 // Write your shape type and associated functions here
 
