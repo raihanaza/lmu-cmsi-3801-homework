@@ -25,7 +25,7 @@ fixture =
     -- , ( "firstThenApply empty list", (firstThenApply [] (/= "") lower) == Nothing )
     -- , ( "firstThenApply lowercase ok", (firstThenApply ["", "A", "B"] (/= "") lower) == Just "a" )
     -- , ( "firstThenApply lengthOver3 no match"
-    --   , (firstThenApply ["", "A", "ABC"] lengthOverThree lower == Nothing ))
+    -- , (firstThenApply ["", "A", "ABC"] lengthOverThree lower == Nothing ))
     -- , ( "firstThenApply lengthOver3 match"
     --   , (firstThenApply ["ABC", "ABCD", "ABCDE"] lengthOverThree lower == Just "abcd" ))
     -- , ( "firstThenApply square no match", (firstThenApply [1, 2, 3] (> 3) (^ 2) == Nothing ))
@@ -57,7 +57,7 @@ fixture =
     -- , ( "number tree inorder", inorder tree_52381 == [1, 2, 3, 5, 8])
     ]
     -- Uncomment the following as needed as you implement your tests
-    where
+    -- where
         -- lower = unpack . toLower . pack
         -- lengthOverThree = (> 3) . length
         -- x `is_approx` y = abs (x - y) < 0.0000001
@@ -72,9 +72,9 @@ main =
         putStrLn $ unlines $ map fst results
         failed <- return $ sum $ map snd results
         passed <- return $ length fixture - failed
-        -- shouldBe5 <- meaningfulLineCount "../test-for-line-count.txt"
-        -- passed <- return $ passed + (if shouldBe5 == 5 then 1 else 0)
-        -- failed <- return $ failed + (if shouldBe5 == 5 then 0 else 1)
+        shouldBe5 <- meaningfulLineCount "../test-for-line-count.txt"
+        passed <- return $ passed + (if shouldBe5 == 5 then 1 else 0)
+        failed <- return $ failed + (if shouldBe5 == 5 then 0 else 1)
         printf "%d passed, %d failed\n" passed failed
         where
             test (message, condition) =

@@ -1,6 +1,6 @@
 module Exercises
     ( change,
-      -- put the proper exports here
+      meaningfulLineCount
     ) where
 
 import qualified Data.Map as Map
@@ -24,7 +24,13 @@ change amount
 
 -- Write your infinite powers generator here
 
--- Write your line count function here
+meaningfulLineCount :: FilePath -> IO Int
+meaningfulLineCount path = do
+  document <- readFile path
+  let allWhiteSpace = all isSpace
+      trimStart = dropWhile isSpace 
+      isMeaningful line = not (allWhiteSpace line) && not ("#" `isPrefixOf` trimStart line)
+  return $ length $ filter isMeaningful $ lines document
 
 -- Write your shape data type here
 
