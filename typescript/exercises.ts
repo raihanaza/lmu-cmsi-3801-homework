@@ -62,7 +62,7 @@ export class Empty<T> implements BinarySearchTree<T> {
   }
 }
 
-export class Node<T> implements BinarySearchTree<T> {
+class Node<T> implements BinarySearchTree<T> {
   private value: T;
   private left: BinarySearchTree<T>
   private right: BinarySearchTree<T>
