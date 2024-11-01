@@ -37,11 +37,6 @@ def say(text: Optional[str] = None) -> Callable | str:
     String concatenation guide to use .join method: https://www.digitalocean.com/community/tutorials/python-string-concatenation
     '''
     sentence: list[str] = []
-    
-    if text is None:
-        return ""
-    
-    sentence.append(text)
 
     def final_sentence(next_text: Optional[str] = None) -> Callable | str:
         if next_text is None:
@@ -50,6 +45,11 @@ def say(text: Optional[str] = None) -> Callable | str:
             sentence.append(next_text)
 
         return final_sentence
+    
+    if text is None:
+        return ""
+    
+    sentence.append(text)
 
     return final_sentence
 

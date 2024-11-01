@@ -26,7 +26,6 @@ public class Exercises {
             .map(String::toLowerCase)
             .findFirst();
     }
-    
     static record Sayer(String phrase) {
         Sayer and(String word) {
             return new Sayer(phrase + " " + word);

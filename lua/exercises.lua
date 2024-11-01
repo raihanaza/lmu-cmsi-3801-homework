@@ -39,15 +39,22 @@ function say(text)
   --[[
   Say function concatenates string functions and chains together to create one final string phrase
   ]]--
+  sentence = {}
+
+  function final_sentence(next_text)
+    if next_text == nil then 
+      return table.concat(sentence, " ")
+    else
+      table.insert(sentence, next_text)
+    end
+    return final_sentence
+  end
   if text == nil then
     return ""
   end
-  return function (next_text)
-    if next_text == nil then
-      return text
-    end
-    return say(text .. " " .. next_text)
-  end
+
+  table.insert(sentence, text)
+  return final_sentence
 end
 
 -- Write your line count function here
