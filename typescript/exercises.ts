@@ -22,6 +22,50 @@ export function firstThenApply<T>(arr: T[], predicate: (element: T) => boolean, 
 
 // Write your line count function here
 
-// Write your shape type and associated functions here
+interface Sphere { 
+  kind: "Sphere"
+  readonly radius: number
+}
+
+interface Box {
+  kind: "Box"
+  readonly width: number
+  readonly length: number 
+  readonly depth: number
+}
+
+export type Shape = Sphere | Box
+
+export function surfaceArea (shape: Shape): number {
+  switch (shape.kind) {
+    case "Sphere":
+      return 4 * Math.PI * shape.radius ** 2;
+    case "Box":
+      return 2 * (shape.width * shape.length + shape.width * shape.depth + shape.length * shape.depth);
+  }
+}
+
+export function volume (shape: Shape): number {
+  switch (shape.kind) {
+    case "Sphere":
+      return (4 / 3) * Math.PI * shape.radius ** 3
+    case "Box":
+      return (shape.length * shape.width * shape.depth)
+  }
+}
+
+export function isEqual(shape1: Shape, shape2: Shape): boolean {
+  if (shape1.kind !== shape2.kind) return false;
+  switch (shape1.kind) {
+    case "Sphere":
+      return shape1.radius === (shape2 as Sphere).radius;
+    case "Box":
+      return (
+        shape1.width === (shape2 as Box).width &&
+        shape1.length === (shape2 as Box).length &&
+        shape1.depth === (shape2 as Box).depth
+      );
+  }
+}
 
 // Write your binary search tree implementation here

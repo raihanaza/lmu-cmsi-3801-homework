@@ -7,12 +7,16 @@ module Exercises
       insert,
       inorder
       -- put the proper exports here
+      volume, 
+      surfaceArea,
+      Shape(..), 
     ) where
 
 import qualified Data.Map as Map
 import Data.Text (pack, unpack, replace)
 import Data.List(isPrefixOf, find)
 import Data.Char(isSpace)
+import GHC.RTS.Flags (DoCostCentres)
 
 change :: Integer -> Either String (Map.Map Integer Integer)
 change amount
@@ -33,7 +37,18 @@ firstThenApply lst predicate fn = fn <$> find predicate lst
 
 -- Write your line count function here
 
--- Write your shape data type here
+data Shape 
+  = Sphere Double 
+  | Box Double Double Double 
+  deriving (Eq, Show)
+
+volume :: Shape -> Double
+volume (Sphere r) = (4.0 / 3.0) * pi * r^3
+volume (Box l w h) = l * w * h
+
+surfaceArea :: Shape -> Double
+surfaceArea (Sphere r) = 4.0 * pi * r^2
+surfaceArea (Box l w h) = 2.0 * (l * w + h * l + h * w)
 
 -- Write your binary search tree algebraic type here
 data BST  a = Empty | Node a (BST a) (BST a)
