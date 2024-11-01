@@ -12,7 +12,12 @@ let change amount =
     in
     aux amount denominations
 
-(* Write your first then apply function here *)
+let first_then_apply (lst: 'a list) (predicate: 'a -> bool) (func: 'a -> 'b option) : 'b option =
+  let rec aux = function
+    | [] -> None
+    | x :: xs -> if predicate x then func x else aux xs
+  in 
+  aux lst
 
 (* Write your powers generator here *)
 
