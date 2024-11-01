@@ -51,7 +51,9 @@
 - Q4 (Quaternion class or table): 
     - The Quaternion class creates the blueprint for creating Quaternion objects. Users can create, add, multiply, list the coefficients, calculate the conjugate, determine equality between conjugates, and print Quaternions as strings.
 - Q5 (Binary Search Tree):
-    - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup. 
+    - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup.
+ 
++1 Homework point because Z pointed out that for the Binary Search Tree in Ocaml, you need to export Empty but the Node should be invisible. Therefore, cannot make the Ocaml BST function secure. 
 
 **Java**
 - Q1 (first then lowercase): Z
@@ -76,9 +78,38 @@
 
 ## Homework 3 (Theory) Submission 
 
-TBD
+### Description
+- Q1 (first then apply): 
+    - 
+- Q2 (powers generator):  
+    - The powers generator function is a generator that takes a base number and a limit, and yields the increasing powers of the base while the resulting number is less than or equal to the limit.
+- Q3 (line count): 
+    - The line count function reads a file line by line and returns how many lines satisfy these three requirements: lines that are not all whitespace, lines that do not have # as their first non-whitespace character, and lines that are not empty.
+- Q4 (shapes): 
+    - The shapes function defines three-dimensional geometric forms (spheres and rectangular boxes) and provides operations to calculate their surface area and volume.
+- Q5 (Binary Search Tree):
+    - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup. 
 
-TypeScript, OCaml, Hasketll
+**Typescript**
+- Q1 (first then apply): Lauren
+- Q2 (powers generator): Z
+- Q3 (line count): Cecilia
+- Q4 (shapes): Raihana
+- Q5 (BST): Cecilia
+
+**Ocaml**
+- Q1 (first then apply): Lauren
+- Q2 (powers generator): Z
+- Q3 (line count): Cecilia
+- Q4 (shapes): Raihana
+- Q5 (BST): Raihana/Z
+
+**Haskell**
+- Q1 (first then apply): Lauren
+- Q2 (powers generator): Z
+- Q3 (line count): Cecilia
+- Q4 (shapes): Raihana
+- Q5 (BST): Lauren
 
 ## Homework 4 (Systems) Submission
 
