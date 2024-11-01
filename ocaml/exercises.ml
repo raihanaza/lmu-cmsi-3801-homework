@@ -44,7 +44,6 @@ let rec insert value tree =
       Node (insert value left, v, right)
     else
       Node (left, v, insert value right);;
-      
 
 let rec size tree = 
   match tree with 
@@ -65,4 +64,4 @@ let rec contains value tree =
 let rec inorder tree = 
   match tree with 
   | Empty -> []
-  | Node (left, v, right) -> inorder left @ [v] @ inorder right;;
+  | Node (left, v, right) -> inorder left @ [v] @ inorder right;; 
