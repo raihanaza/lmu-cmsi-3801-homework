@@ -13,7 +13,10 @@ export function change(amount: bigint): Map<bigint, bigint> {
   return counts
 }
 
-// Write your first then apply function here
+export function firstThenApply<T>(arr: T[], predicate: (element: T) => boolean, func: (element: T) => T) : T | undefined {
+  const element = arr.find(predicate);
+  return  element !== undefined ? func(element) : undefined;
+}
 
 export function* powersGenerator(base: bigint): Generator<bigint> {
     let power = 1n; // Use `bigint` to handle large numbers

@@ -4,6 +4,6 @@
     "test": "tsc && node --test dist/exercises.test.js"
   },
   "devDependencies": {
-    "@types/node": "^22.8.5"
+    "@types/node": "^22.8.6"
   }
 }

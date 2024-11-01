@@ -1,8 +1,8 @@
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 
 public class ExercisesTest {

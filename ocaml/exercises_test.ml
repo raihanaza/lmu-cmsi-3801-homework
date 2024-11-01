@@ -29,9 +29,6 @@ expect (change(99) = [3; 2; 0; 4]);;
 expect (change(100000000037) = [4000000001; 1; 0; 2]);;
 expect (change(10000000000005) = [400000000000; 0; 1; 0]);;
 
-(* Uncomment the following tests as you complete the exercises *)
-
-(* 
 let non_empty s = s <> "";;
 let length_greater_than_3 s = String.length s > 3;;
 let lower s = Some (String.lowercase_ascii s);;
