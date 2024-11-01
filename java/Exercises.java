@@ -20,12 +20,13 @@ public class Exercises {
         return counts;
     }
 
-public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
-    return strings.stream() 
-        .filter(s -> s != null && predicate.test(s))
-        .map(String::toLowerCase)
-        .findFirst();
-}
+    public static Optional<String> firstThenLowerCase(List<String> strings, Predicate<String> predicate) {
+        return strings.stream() 
+            .filter(s -> s != null && predicate.test(s))
+            .map(String::toLowerCase)
+            .findFirst();
+    }
+    
     static record Sayer(String phrase) {
         Sayer and(String word) {
             return new Sayer(phrase + " " + word);
