@@ -1,15 +1,14 @@
 module Exercises
     ( change,
       firstThenApply,
+      volume, 
+      surfaceArea,
+      Shape(..), 
       BST(Empty),
       size,
       contains,
       insert,
       inorder
-      -- put the proper exports here
-      volume, 
-      surfaceArea,
-      Shape(..), 
     ) where
 
 import qualified Data.Map as Map
@@ -50,7 +49,6 @@ surfaceArea :: Shape -> Double
 surfaceArea (Sphere r) = 4.0 * pi * r^2
 surfaceArea (Box l w h) = 2.0 * (l * w + h * l + h * w)
 
--- Write your binary search tree algebraic type here
 data BST  a = Empty | Node a (BST a) (BST a)
 
 insert :: (Ord a) => a -> BST a -> BST a
