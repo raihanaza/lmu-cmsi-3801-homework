@@ -1,9 +1,11 @@
 module Exercises
-    ( change,
+    ( change, 
       firstThenApply,
-      volume, 
+      powers,
+      meaningfulLineCount,
+      Shape(..),
+      volume,
       surfaceArea,
-      Shape(..), 
       BST(Empty),
       size,
       contains,
@@ -32,9 +34,16 @@ change amount
 firstThenApply :: [a] -> (a -> Bool) -> (a -> b) -> Maybe b
 firstThenApply lst predicate fn = fn <$> find predicate lst
 
--- Write your infinite powers generator here
+powers :: Integer -> [Integer]
+powers base = iterate (* base) 1
 
--- Write your line count function here
+meaningfulLineCount :: FilePath -> IO Int
+meaningfulLineCount path = do
+  document <- readFile path
+  let allWhiteSpace = all isSpace
+      trimStart = dropWhile isSpace 
+      isMeaningful line = not (allWhiteSpace line) && not ("#" `isPrefixOf` trimStart line)
+  return $ length $ filter isMeaningful $ lines document
 
 data Shape 
   = Sphere Double 
