@@ -78,7 +78,7 @@
 
 ### Description
 - Q1 (first then apply): 
-    - TBD
+    - The first then apply function takes an array and finds the first thing in the array that complies with a given predicate.
 - Q2 (powers generator):  
     - The powers generator function is a generator that takes a base number and a limit, and yields the increasing powers of the base while the resulting number is less than or equal to the limit.
 - Q3 (line count): 
