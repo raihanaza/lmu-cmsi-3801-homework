@@ -1,5 +1,5 @@
 module Exercises
-    ( change,
+    ( change, powers,
       -- put the proper exports here
     ) where
 
@@ -23,6 +23,9 @@ change amount
 -- Write your first then apply function here
 
 -- Write your infinite powers generator here
+
+powers :: Integer -> [Integer]
+powers base = iterate (* base) 1
 
 -- Write your line count function here
 

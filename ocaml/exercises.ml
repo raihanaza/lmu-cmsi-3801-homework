@@ -14,7 +14,11 @@ let change amount =
 
 (* Write your first then apply function here *)
 
-(* Write your powers generator here *)
+let powers_generator base =
+  let rec aux power () =
+    Seq.Cons (power, aux (power * base))
+  in
+  aux 1
 
 (* Write your line count function here *)
 

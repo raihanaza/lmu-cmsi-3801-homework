@@ -31,7 +31,7 @@ expect (change(10000000000005) = [400000000000; 0; 1; 0]);;
 
 (* Uncomment the following tests as you complete the exercises *)
 
-(*
+(* 
 let non_empty s = s <> "";;
 let length_greater_than_3 s = String.length s > 3;;
 let lower s = Some (String.lowercase_ascii s);;
@@ -43,7 +43,7 @@ expect (first_then_apply [""; "A"; "B"] non_empty lower = Some "a");;
 expect (first_then_apply [""; "A"; "ABC"] length_greater_than_3 lower = None);;
 expect (first_then_apply ["ABC"; "ABCD"; "ABCDE"] length_greater_than_3 lower = Some "abcd");;
 expect (first_then_apply [1; 2; 3] (fun n -> n > 1) square = Some 4);;
-expect (first_then_apply [1; 2; 3] (fun n -> n > 3) square = None);;
+expect (first_then_apply [1; 2; 3] (fun n -> n > 3) square = None);; *)
 
 suite "powers_generator";;
 let g1 = powers_generator 1 in (
@@ -61,7 +61,7 @@ let g3 = powers_generator 3 in (
   expect_equal_lists (Seq.take 0 g3 |> List.of_seq) []
 );;
 
-suite "meaningful_line_count";;
+(* suite "meaningful_line_count";;
 try (meaningful_line_count("no-such-file.txt") |> fun _ -> expect false) with
   | Sys_error _ -> expect true;;
 expect(meaningful_line_count("../test-for-line-count.txt") == 5);;
@@ -96,7 +96,7 @@ let t5 = insert 4 t4 in (
   expect (inorder t3 = [3; 5]);
   expect (inorder t4 = [3; 5; 7]);
   expect (inorder t5 = [3; 4; 5; 7]);
-);;
-*)
+);; *)
+
 
 Printf.printf "\n%d passed, %d failed\n" !passes !failures;;
