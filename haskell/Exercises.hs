@@ -1,5 +1,5 @@
 module Exercises
-    ( change,
+    ( change, powers,
       meaningfulLineCount,
       volume,
       surfaceArea,
@@ -26,7 +26,8 @@ change amount
 
 -- Write your first then apply function here
 
--- Write your infinite powers generator here
+powers :: Integer -> [Integer]
+powers base = iterate (* base) 1
 
 meaningfulLineCount :: FilePath -> IO Int
 meaningfulLineCount path = do

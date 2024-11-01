@@ -14,7 +14,11 @@ let change amount =
 
 (* Write your first then apply function here *)
 
-(* Write your powers generator here *)
+let powers_generator base =
+  let rec aux power () =
+    Seq.Cons (power, aux (power * base))
+  in
+  aux 1
 
 let meaningful_line_count filename =
   let file = open_in filename in
@@ -30,7 +34,8 @@ let meaningful_line_count filename =
     | exception End_of_file ->
       count
   in Fun.protect ~finally (fun () -> count_lines 0)
-  
+
+
 type shape =
   | Sphere of float
   | Box of float * float * float
@@ -48,6 +53,7 @@ let surface_area sa =
 type 'a binary_search_tree =
   | Empty
   | Node of 'a binary_search_tree * 'a * 'a binary_search_tree
+
 
 let rec insert value tree =
   match tree with

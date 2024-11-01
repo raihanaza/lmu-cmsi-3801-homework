@@ -15,7 +15,14 @@ export function change(amount: bigint): Map<bigint, bigint> {
 
 // Write your first then apply function here
 
-// Write your powers generator here
+export function* powersGenerator(base: bigint): Generator<bigint> {
+    let power = 1n; // Use `bigint` to handle large numbers
+    while (true) {
+        yield power;
+        power *= base;
+    }
+}
+
 
 export async function meaningfulLineCount(fileName: string): Promise<number> {
   const file = await open(fileName, "r")
@@ -29,6 +36,7 @@ export async function meaningfulLineCount(fileName: string): Promise<number> {
   }
   return count
 }
+
 
 interface Sphere { 
   kind: "Sphere"
@@ -75,6 +83,7 @@ export function isEqual(shape1: Shape, shape2: Shape): boolean {
       );
   }
 }
+
 
 export interface BinarySearchTree<T> {
   size(): number
