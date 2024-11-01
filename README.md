@@ -52,8 +52,6 @@
     - The Quaternion class creates the blueprint for creating Quaternion objects. Users can create, add, multiply, list the coefficients, calculate the conjugate, determine equality between conjugates, and print Quaternions as strings.
 - Q5 (Binary Search Tree):
     - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup.
- 
-+1 Homework point because Z pointed out that for the Binary Search Tree in Ocaml, you need to export Empty but the Node should be invisible. Therefore, cannot make the Ocaml BST function secure. 
 
 **Java**
 - Q1 (first then lowercase): Z
@@ -89,6 +87,8 @@
     - The shapes function defines three-dimensional geometric forms (spheres and rectangular boxes) and provides operations to calculate their surface area and volume.
 - Q5 (Binary Search Tree):
     - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup. 
+
++1 Homework point because Z pointed out that for the Binary Search Tree in Ocaml, you need to export Empty but the Node should be invisible. Therefore, cannot make the Ocaml BST function secure. 10/31/24
 
 **Typescript**
 - Q1 (first then apply): Lauren
