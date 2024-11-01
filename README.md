@@ -26,30 +26,90 @@
 - Q5 (Quaternion table): Cecilia
   
 **Javascript**
-- Q1: Cecilia
-- Q2: Lauren
-- Q3: Raihana
-- Q4: Z
-- Q5: Lauren 
+- Q1 (first then lower case): Cecilia
+- Q2 (powers generator): Lauren
+- Q3 (say): Raihana
+- Q4 (line count): Z
+- Q5 (Quaternion class): Lauren 
 
 **Python**
-- Q1: Cecilia
-- Q2: Lauren
-- Q3: Raihana
-- Q4: Z
-- Q5: Raihana and Z
+- Q1 (first then lower case): Cecilia
+- Q2 (powers generator): Lauren
+- Q3 (say): Raihana
+- Q4 (line count): Z
+- Q5 (Quaternion class): Raihana/Z
 
 ## Homework 2 (Enterprise) Submission 
 
-TBD
+### Description
+- Q1 (first then lower case): 
+    - The first then lower case function takes a sequence of strings and a predicate as input, and the first string to match that predicate is returned in all lowercase letters. If there is no string matching that predicate or the sequence is empty, then nil (Lua), undefined (Javascript), or None (Python) is returned.
+- Q2 (say):  
+    - The say function utilizes recursive calls to chain multiple strings together into a final outputted phrase. If there are no input call, it will output an empty string. 
+- Q3 (line count): 
+    - The line count function reads a file line by line and returns how many lines satisfy these three requirements: lines that are not all whitespace, lines that do not have # as their first non-whitespace character, and lines that are not empty.
+- Q4 (Quaternion class or table): 
+    - The Quaternion class creates the blueprint for creating Quaternion objects. Users can create, add, multiply, list the coefficients, calculate the conjugate, determine equality between conjugates, and print Quaternions as strings.
+- Q5 (Binary Search Tree):
+    - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup.
 
-Java, Kotlin, Swift
+**Java**
+- Q1 (first then lowercase): Z
+- Q2 (say): Cecilia
+- Q3 (line count): Raihana
+- Q4 (Quaternion): Cecilia
+- Q5 (BST): Lauren
+
+**Kotlin**
+- Q1 (first then lowercase): Z
+- Q2 (say): Cecilia
+- Q3 (line count): Raihana
+- Q4 (Quaternion): Lauren
+- Q5 (BST): Cecilia
+
+**Swift**
+- Q1 (first then lowercase): Z
+- Q2 (say): Cecilia
+- Q3 (line count): Raihana
+- Q4 (Quaternion): Lauren
+- Q5 (BST): Raihana/Z
 
 ## Homework 3 (Theory) Submission 
 
-TBD
+### Description
+- Q1 (first then apply): 
+    - The first then apply function takes an array and finds the first thing in the array that complies with a given predicate.
+- Q2 (powers generator):  
+    - The powers generator function is a generator that takes a base number and a limit, and yields the increasing powers of the base while the resulting number is less than or equal to the limit.
+- Q3 (line count): 
+    - The line count function reads a file line by line and returns how many lines satisfy these three requirements: lines that are not all whitespace, lines that do not have # as their first non-whitespace character, and lines that are not empty.
+- Q4 (shapes): 
+    - The shapes function defines three-dimensional geometric forms (spheres and rectangular boxes) and provides operations to calculate their surface area and volume.
+- Q5 (Binary Search Tree):
+    - Creating an immutable and persistent binary tree implementation that supports element count, insertion, and item lookup. 
 
-TypeScript, OCaml, Hasketll
++1 Homework point because Z pointed out that for the Binary Search Tree in Ocaml, you need to export Empty but the Node should be invisible. Therefore, cannot make the Ocaml BST function secure. 10/31/24
+
+**Typescript**
+- Q1 (first then apply): Lauren
+- Q2 (powers generator): Z
+- Q3 (line count): Cecilia
+- Q4 (shapes): Raihana
+- Q5 (BST): Cecilia
+
+**Ocaml**
+- Q1 (first then apply): Lauren
+- Q2 (powers generator): Z
+- Q3 (line count): Cecilia
+- Q4 (shapes): Raihana
+- Q5 (BST): Raihana/Z
+
+**Haskell**
+- Q1 (first then apply): Lauren
+- Q2 (powers generator): Z
+- Q3 (line count): Cecilia
+- Q4 (shapes): Raihana
+- Q5 (BST): Lauren
 
 ## Homework 4 (Systems) Submission
 
