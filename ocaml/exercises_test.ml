@@ -40,7 +40,7 @@ expect (first_then_apply [""; "A"; "B"] non_empty lower = Some "a");;
 expect (first_then_apply [""; "A"; "ABC"] length_greater_than_3 lower = None);;
 expect (first_then_apply ["ABC"; "ABCD"; "ABCDE"] length_greater_than_3 lower = Some "abcd");;
 expect (first_then_apply [1; 2; 3] (fun n -> n > 1) square = Some 4);;
-expect (first_then_apply [1; 2; 3] (fun n -> n > 3) square = None);; *)
+expect (first_then_apply [1; 2; 3] (fun n -> n > 3) square = None);;
 
 suite "powers_generator";;
 let g1 = powers_generator 1 in (

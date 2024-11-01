@@ -1,7 +1,4 @@
 module Exercises
-    ( change,
-      firstThenApply,
-      volume, 
     ( change, 
       firstThenApply,
       powers,
