@@ -24,6 +24,9 @@ class Stack {
   // Add three fields: elements, a smart pointer to the array of elements,
   // capacity, the current capacity of the array, and top, the index of the
   // next available slot in the array.
+  unique_ptr<T[]> elements;
+  int capacity;
+  int top;
 
   // Prohibit copying and assignment
   
@@ -33,6 +36,9 @@ public:
   // Write your size() method here
 
   // Write your is_empty() method here
+  bool is_empty() const {
+    return top == 0;
+  }
 
   // Write your is_full() method here
 
