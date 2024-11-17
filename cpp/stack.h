@@ -29,11 +29,21 @@ class Stack {
   int top;
 
   // Prohibit copying and assignment
+  Stack(const Stack<T>&) = delete;
+  Stack<T>& operator=(const Stack<T>&) = delete;
   
 public:
   // Write your stack constructor here
+  Stack(): 
+    top(0),
+    capacity(INITIAL_CAPACITY),
+    elements(make_unique<T[]>(INITIAL_CAPACITY)) {
+  }
 
   // Write your size() method here
+  int size() const {
+    return top;
+  }
 
   // Write your is_empty() method here
   bool is_empty() const {
@@ -43,8 +53,29 @@ public:
   // Write your is_full() method here
 
   // Write your push() method here
+  void push(T item) {
+    if (top == MAX_CAPACITY) {
+      throw overflow_error("Stack has reached maximum capacity");
+    }
+    if (top == capacity) {
+      // call your reallocate here
+      reallocate(2 * capacity);
+    }
+    elements[top++] = item;
+  }
 
   // Write your pop() method here
+  T pop() {
+    if (is_empty()) {
+      throw underflow_error("cannot pop from empty stack");
+    }
+    if (top <= capacity / 4) {
+      reallocate(capacity / 2);
+    }
+    // get the top element, pop it
+    // overwrite the top element with default value (for security)
+    // return top element
+  }
 
 private:
   // We recommend you make a PRIVATE reallocate method here. It should
@@ -53,5 +84,8 @@ private:
   // to use std::move() to transfer ownership of the new array to the stack
   // after (of course) copying the elements from the old array to the new
   // array with std::copy().
+  void reallocate(int new_capacity) {
+    // TODO
+  }
 
 };
