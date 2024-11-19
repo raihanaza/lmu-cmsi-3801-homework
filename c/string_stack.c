@@ -53,7 +53,7 @@ response_code push(stack s, char* item) {
         char** new_elements = realloc(s->elements, new_capacity * sizeof(char*));
         if (new_elements == NULL) {
             return out_of_memory;
-        }
+        } 
         s->elements = new_elements;
         s->capacity = new_capacity;
 
@@ -71,17 +71,21 @@ string_response pop(stack s) {
         return (string_response) {.code = stack_empty, .string = NULL};
     }
     char* popped = s->elements[--s->top];
+    // clear slot for security
+    s->elements[s->top] = NULL;
     // if capacity went below 1/4, we should shrink it
     int new_capacity = s->capacity / 4;
-    if (new_capacity < 1) {
-        new_capacity = 1;
+    if (new_capacity < INITIAL_CAPACITY) {
+        new_capacity = INITIAL_CAPACITY;
     }
-    char** new_elements = realloc(s->elements, new_capacity * sizeof(char*));
-    if (new_elements == NULL) {
-        return (string_response){.code = out_of_memory, .string = NULL};
+    if (s->top < new_capacity) {
+        char** new_elements = realloc(s->elements, new_capacity * sizeof(char*));
+        if (new_elements == NULL) {
+            return (string_response){.code = out_of_memory, .string = NULL};
+        }
+        s->elements = new_elements;
+        s->capacity = new_capacity;
     }
-    s->elements = new_elements;
-    s->capacity = new_capacity;
 
     return (string_response){.code = success, .string = popped};
 }
