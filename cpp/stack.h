@@ -85,7 +85,22 @@ private:
   // after (of course) copying the elements from the old array to the new
   // array with std::copy().
   void reallocate(int new_capacity) {
-    // TODO
+    if (new_capacity > MAX_CAPACITY) {
+        new_capacity = MAX_CAPACITY;
+    }
+    if (new_capacity < INITIAL_CAPACITY) {
+        new_capacity = INITIAL_CAPACITY;
+    }
+
+    // new array with the desired capacity
+    auto new_elements = std::make_unique<T[]>(new_capacity);
+
+    // copy existing elements to the new array
+    std::copy(elements.get(), elements.get() + top, new_elements.get());
+
+    // transfer ownership of the new array to the stack
+    elements = std::move(new_elements);
+    capacity = new_capacity;
   }
 
 };
