@@ -21,20 +21,26 @@ using namespace std;
 
 template <typename T>
 class Stack {
-  // Add three fields: elements, a smart pointer to the array of elements,
-  // capacity, the current capacity of the array, and top, the index of the
-  // next available slot in the array.
+  unique_ptr<T[]> elements;
+  int capacity;
+  int top;
 
-  // Prohibit copying and assignment
-  
+  Stack(const Stack<T>&) = delete
+  Stack<T>& operator = (const Stack<T>&) = delete
+
 public:
-  // Write your stack constructor here
-
+  Stack(): 
+    top(0),
+    capacity(INITIAL_CAPACITY),
+    elements(make_unique<T[]>(INITIAL_CAPACITY)) {
+  }
   // Write your size() method here
 
   // Write your is_empty() method here
 
-  // Write your is_full() method here
+  bool is_full() const {
+    return top == MAX_CAPACITY;
+  }
 
   // Write your push() method here
 
@@ -47,5 +53,7 @@ private:
   // to use std::move() to transfer ownership of the new array to the stack
   // after (of course) copying the elements from the old array to the new
   // array with std::copy().
-
+  void reallocate(int new_capacity) {
+    
+  }
 };

@@ -1,4 +1,4 @@
-// A module for an expandable array-based stack of strings, built from
+ // A module for an expandable array-based stack of strings, built from
 // scratch. This module is hyper-focused on software security, so you
 // will see defensive copying, strict bounds-checking, input validation,
 // and error objects prominently featured. Although the stack will grow
