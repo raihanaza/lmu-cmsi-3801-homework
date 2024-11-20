@@ -37,5 +37,6 @@ string_response pop(stack s);             // Will include a copy of the string
                                           // responsible for freeing it
 
 void destroy(stack* s) { // frees *all* the memory
-    
+    free((*s)->elements);
+    free(s);
 }
