@@ -103,20 +103,31 @@ response_code push(stack s, char* item) {
 
 string_response pop(stack s) {
     if (is_empty(s)) {
-        return (string_response) {.code = stack_empty, .string = NULL};
+        return (string_response) {
+            stack_empty, NULL
+        };
     }
     char* popped = s->elements[--s->top];
     s->elements[s->top] = NULL;
-    int new_capacity = s->capacity / 4;
-    if (s->top > 0 && s->top <= new_capacity) {
+    if(s->top <= s->capacity / 4) {
+        int new_capacity = s->capacity / 2;
+
+        if (new_capacity < INITIAL_CAPACITY) {
+            new_capacity = INITIAL_CAPACITY;
+        }
+
         char** new_elements = realloc(s->elements, new_capacity * sizeof(char*));
         if (new_elements == NULL) {
-            return (string_response){.code = out_of_memory, .string = NULL};
+            return (string_response) {
+                out_of_memory, NULL
+            };
         }
         s->elements = new_elements;
         s->capacity = new_capacity;
     }
-    return (string_response){.code = success, .string = popped};
+    return (string_response) {
+        success, popped
+    };
 }
 
 void destroy(stack* s) {
