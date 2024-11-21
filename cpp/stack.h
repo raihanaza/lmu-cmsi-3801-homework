@@ -28,29 +28,27 @@ class Stack {
   int capacity;
   int top;
 
-  // Prohibit copying and assignment
   Stack(const Stack<T>&) = delete;
   Stack<T>& operator=(const Stack<T>&) = delete;
   
 public:
-  // Write your stack constructor here
   Stack(): 
     top(0),
     capacity(INITIAL_CAPACITY),
     elements(make_unique<T[]>(INITIAL_CAPACITY)) {
   }
 
-  // Write your size() method here
   int size() const {
     return top;
   }
 
-  // Write your is_empty() method here
   bool is_empty() const {
     return top == 0;
   }
 
-  // Write your is_full() method here
+  bool is_full() const {
+    return top == MAX_CAPACITY;
+  }
 
   // Write your push() method here
   void push(T item) {
@@ -69,12 +67,15 @@ public:
     if (is_empty()) {
       throw underflow_error("cannot pop from empty stack");
     }
-    if (top <= capacity / 4) {
+    T popped = std::move(elements[--top]);
+    elements[top] = T();
+    if (top > 0 && top <= capacity / 4) {
       reallocate(capacity / 2);
     }
     // get the top element, pop it
     // overwrite the top element with default value (for security)
     // return top element
+    return popped;
   }
 
 private:
@@ -91,16 +92,10 @@ private:
     if (new_capacity < INITIAL_CAPACITY) {
         new_capacity = INITIAL_CAPACITY;
     }
-
-    // new array with the desired capacity
     auto new_elements = std::make_unique<T[]>(new_capacity);
-
-    // copy existing elements to the new array
     std::copy(elements.get(), elements.get() + top, new_elements.get());
 
-    // transfer ownership of the new array to the stack
     elements = std::move(new_elements);
     capacity = new_capacity;
   }
-
 };
