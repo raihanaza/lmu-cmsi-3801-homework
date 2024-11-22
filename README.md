@@ -165,6 +165,7 @@
     - Returns true if the stack is empty and false if the stack contains 1 or more elements.
 - pub fn len(&self) -> usize
     - Returns the length of the stack as a usize (which is a number).
+
 ## Homework 5 (Concurrency) Submission
 
 TBD
