@@ -113,9 +113,58 @@
 
 ## Homework 4 (Systems) Submission
 
-TBD
+**C, C++, Rust**
 
-C, C++, Rust
+### Description
+**C**
+- stack_response create()
+    - Creates a Stack and returns a stack_response. If there is no memory left to store the stack type or the INITIAL_CAPACITY of the stack elements, the function will return an out_of_memory response code and NULL response stack. If there is enough memory to store a stack, then a success response code and a response stack will be returned.
+- int size(const stack s)
+    - Returns the size of the stack by accessing the value of the variable top that is stored inside stack. The variable top keeps track of the size whenever elements are pushed or popped from the stack. 
+- bool is_empty(const stack s)
+    - Returns true when the stack is empty and false when the stack contains 1 or more elements. We can tell when the stack is empty when the size is equal to 0.
+- bool is_full(const stack s)
+    - Returns true when the stack is full (when the stack size is equal to MAX_CAPACITY) and false otherwise.
+- response_code push(stack s, char* item)
+    - Pushes an element to the end of the stack and returns a string_response. Returns an out_of_memory response code if s is NULL or item is NULL, returns stack_element_too_large if the length of the item to be inserted into the stack is too large, and returns a stack_full response_code if the stack is full and cannot store anymore elements. If none of those response codes are returned, memory is reallocated in the stack to store another item, and a success code is returned unless the stack runs out of memory.
+- string_response pop(stack s)
+    - Pops, or removes, an element from the end of the stack and returns a string_response. Returns a string_response with a stack_empty message and NULL element if the stack to be popped from is empty or an out_of_memory message and NULL element if there is no more memory to reallocate the stack in order to remove an element. A success message and the popped element are returned in a string_response otherwise.
+- void destroy(stack* s)
+    - This frees all the mallocs that were allocated in other functions, including all individual elements in the elements array inside the stack variable s, the pointer to the elements array, the stack s, and sets the pointer to s to NULL.
+
+**C++**
+- Stack(const Stack<T>&) = delete; 
+    - Deletes the copy constructor to prevent copying of Stack objects.
+- Stack<T>& operator=(const Stack<T>&) = delete;
+    - Deletes the copy assignment operator to prevent copying of Stack objects with the copy assignment operator.
+- Stack() 
+  - Creates a Stack with an initial top of 0 (since the initial size of teh stack is 0), a capacity equal to INITIAL_CAPACITY, and the elements to be inserted in the stack.
+- int size() const
+    - Returns the size of the stack by accessing the top attribute that keeps track of the stack size.
+- bool is_empty() const
+    - Returns true when the stack is empty and false when the stack contains 1 or more elements. We can tell when the stack is empty when top is equal to 0.
+- bool is_full() const
+    - Returns true when the stack is full (when the stack size is equal to MAX_CAPACITY) and false otherwise.
+- void push(T new_element)
+    - Adds an element to the end of the stack as long as the stack size is less than its MAX_CAPACITY and increments the top variable if an element is added succesfully.
+- T pop()
+    - Removes an element from one of the stack and returns it as long as the stack is not empty, and returns the removed element.
+- void reallocate(int new_capacity)
+    - Reallocates elements in the stack to take up more or less memory depending on whether elements are added to or removed from the stack.
+
+**Rust**
+- pub fn new() -> Self 
+    - Creates a new Stack object that contains an empty stack of the generic type Vec.
+- pub fn push(&mut self, item: T)
+    - Adds an item to the end of the stack by appending an item to the end of the items list.
+- pub fn pop(&mut self) -> Option<T>
+    - Removes the last element of the stack, and returns an Optional because it will return the element removed if items is not empty and return None if items is empty.
+- pub fn peek(&self) -> Option<&T>
+    - Returns the last element of the stack, and returns an Optional because it will return the element if items is not empty and return None if items is empty.
+- pub fn is_empty(&self) -> bool
+    - Returns true if the stack is empty and false if the stack contains 1 or more elements.
+- pub fn len(&self) -> usize
+    - Returns the length of the stack as a usize (which is a number).
 
 ## Homework 5 (Concurrency) Submission
 
