@@ -21,6 +21,9 @@ using namespace std;
 
 template <typename T>
 class Stack {
+  unique_ptr<T[]>elements;
+  int top;
+  int capacity;
   // Add three fields: elements, a smart pointer to the array of elements,
   // capacity, the current capacity of the array, and top, the index of the
   // next available slot in the array.
@@ -36,9 +39,26 @@ public:
 
   // Write your is_full() method here
 
-  // Write your push() method here
+  void push(T new_element) {
+    if (top >= MAX_CAPACITY) {
+      throw std::overflow_error("Error: Stack is at or above maximum capacity");
+    }
+    if (top == MAX_CAPACITY) {
+      reallocate(2 * capacity)
+    }
+    elements[top++] = new_element;
+  }
 
-  // Write your pop() method here
+  T pop() {
+    if (is_empty()) {
+      throw std::underflow_error("Error: Stack is Empty");
+    }
+    T element_popped = elements[--top];
+    if (top > 0 && top <= capacity / 4) {
+      reallocate(capacity / 2);
+    }
+    return element_popped;
+  }
 
 private:
   // We recommend you make a PRIVATE reallocate method here. It should
