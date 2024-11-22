@@ -34,26 +34,25 @@ public:
     return top == MAX_CAPACITY;
   }
 
-  void push(T item) {
-    if (top == MAX_CAPACITY) {
+  void push(T new_element) {
+    if (top >= MAX_CAPACITY) {
       throw overflow_error("Stack has reached maximum capacity");
     }
-    if (top == capacity) {
+    if (top == MAX_CAPACITY) {
       reallocate(2 * capacity);
     }
-    elements[top++] = item;
+    elements[top++] = new_element;
   }
 
   T pop() {
     if (is_empty()) {
       throw underflow_error("cannot pop from empty stack");
     }
-    T popped = std::move(elements[--top]);
-    elements[top] = T();
+    T element_popped = std::move(elements[--top]);
     if (top > 0 && top <= capacity / 4) {
       reallocate(capacity / 2);
     }
-    return popped;
+    return element_popped;
   }
 
 private:
