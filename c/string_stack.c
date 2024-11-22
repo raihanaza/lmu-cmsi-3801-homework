@@ -124,14 +124,13 @@ string_response pop(stack s) {
 }
 
 void destroy(stack* s) {
-    if (!s || is_empty(s)) {
-        return;
-    }
+    if (!s || !*s) return;
 
     for (int i = 0; i < (*s)->top; i++) {
         free((*s)->elements[i]);
     }
 
     free((*s)->elements);
-    free(s);
-}
+    free(*s);
+    *s = NULL;
+}   
