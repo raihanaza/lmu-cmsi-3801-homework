@@ -38,7 +38,7 @@ public:
     if (top >= MAX_CAPACITY) {
       throw overflow_error("Stack has reached maximum capacity");
     }
-    if (top == MAX_CAPACITY) {
+    if (top == capacity) {
       reallocate(2 * capacity);
     }
     elements[top++] = new_element;
