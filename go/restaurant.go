@@ -8,40 +8,37 @@ import (
 	"time"
 )
 
-// A little utility that simulates performing a task for a random duration.
-// For example, calling do(10, "Remy", "is cooking") will compute a random
-// number of milliseconds between 5000 and 10000, log "Remy is cooking",
-// and sleep the current goroutine for that much time.
-
 func do(seconds int, action ...any) {
     log.Println(action...)
     randomMillis := 500 * seconds + rand.Intn(500 * seconds)
     time.Sleep(time.Duration(randomMillis) * time.Millisecond)
 }
 
-
-// its not bools, its actully Orders
-// not actually correct -- look at the Java
 type Order struct {
     id uint64
     customer string
-    // make a reply which is a channel that can take the order (HINT you need a pointer to the order)
-    // also the name of the cook 
+    reply chan *Order
+    preparedBy string
 }
-// you also need a mechanism to generate the next order id - similar to java, you need atomic -- import atomic
-var nextId atomic.Uint64 
-
-// a waiter can only hold 3 orders at once
+var nextId uint64 
 var Waiter = make(chan *Order, 3)
 
+func NewOrder(customer string) *Order {
+    return &Order{
+        id: atomic.AddUint64(&nextId, 1),
+        customer: customer,
+        reply: make(chan *Order),
+    }
+}
+
 func Cook(name string) {
-    do(10, name, "is cooking")
-    // log that the cook is starting
-    // loop forever
-    //      wait for an order from the waiter
-    //      cook it 
-    //      put the name of the cook in the order 
-    //      send it back into the reply channel: order.reply <- order
+    log.Println(name, "starting work")
+    for {
+        order := <-Waiter
+        do(10, name, "cooking order", order.id, "for", order.customer)
+        order.preparedBy = name
+        order.reply <- order
+    }
 }
 
 func Customer(name string, wg *sync.WaitGroup) {
