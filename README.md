@@ -172,7 +172,9 @@ TBD
 
 Go
 
-+1 Homework point because Cecilia helped Dr. Toal in-class by pointing out the Reset Button on A tour of Go lecture on 12/2/2024.
++1 Homework point because Cecilia helped Dr. Toal in-class by pointing out the Reset Button on A Tour of Go lecture on 12/2/2024. 
+
++2 Homework points because Ceclia pointed out to make a channel in Go during the A Tour of Go lecture wrapup on 12/4/2024.
 
 ## Original Instructions for Reference
 
