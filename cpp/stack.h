@@ -8,18 +8,19 @@ using namespace std;
 
 template <typename T>
 class Stack {
-  unique_ptr<T[]>elements;
+  unique_ptr<T[]> elements;
   int capacity;
   int top;
 
   Stack(const Stack<T>&) = delete;
-  Stack<T>&operator=(const Stack <T>&) = delete;
+  Stack<T>& operator=(const Stack<T>&) = delete;
   
 public:
-  Stack() : 
-    elements(make_unique<T[]>(INITIAL_CAPACITY)), 
+  Stack(): 
+    top(0),
     capacity(INITIAL_CAPACITY),
-    top(0) {}
+    elements(make_unique<T[]>(INITIAL_CAPACITY)) {
+  }
 
   int size() const {
     return top;
@@ -33,40 +34,40 @@ public:
     return top == MAX_CAPACITY;
   }
 
-  void push(T item) {
-    if (top == MAX_CAPACITY) {
+  void push(T new_element) {
+    if (top >= MAX_CAPACITY) {
       throw overflow_error("Stack has reached maximum capacity");
     }
     if (top == capacity) {
       reallocate(2 * capacity);
     }
-    elements[top++] = item;
+    elements[top++] = new_element;
   }
 
   T pop() {
     if (is_empty()) {
       throw underflow_error("cannot pop from empty stack");
     }
-    T popped_item = elements[--top];
+    T element_popped = std::move(elements[--top]);
     if (top > 0 && top <= capacity / 4) {
       reallocate(capacity / 2);
     }
-    return popped_item;
+    return element_popped;
   }
 
 private:
   void reallocate(int new_capacity) {
     if (new_capacity > MAX_CAPACITY) {
-      throw overflow_error("Stack capacity has exceeded maximum limit");
+        new_capacity = MAX_CAPACITY;
+        throw overflow_error("Stack capacity has exceeded maximum limit");
     }
     if (new_capacity < INITIAL_CAPACITY) {
-      new_capacity = INITIAL_CAPACITY;
+        new_capacity = INITIAL_CAPACITY;
     }
-    unique_ptr<T[]> new_elements = make_unique<T[]>(new_capacity);
-    for (int i = 0; i < top; ++i) {
-      new_elements[i] = move(elements[i]);
-    }
-    elements = move(new_elements);
+    auto new_elements = std::make_unique<T[]>(new_capacity);
+    std::copy(elements.get(), elements.get() + top, new_elements.get());
+
+    elements = std::move(new_elements);
     capacity = new_capacity;
   }
 };

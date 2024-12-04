@@ -1,8 +1,10 @@
 #include "string_stack.h"
+
 #include <stdlib.h>
 #include <string.h>
 
 #define INITIAL_CAPACITY 16
+
 struct _Stack {
     char** elements;
     int top;
@@ -18,7 +20,7 @@ static response_code reallocate(stack s, int new_capacity) {
     }
 
     char** new_elements = realloc(s->elements, new_capacity * sizeof(char*));
-    if (!new_elements) {
+    if (new_elements == NULL) {
         return out_of_memory;
     }
 
@@ -57,12 +59,12 @@ int size(const stack s) {
 }
 
 bool is_empty(const stack s) {
-    return s->top == 0;
+    return size(s) == 0;
 }
 
 bool is_full(const stack s) {
     return s->top == MAX_CAPACITY;
-}        
+}
 
 response_code push(stack s, char* item) {
     if (!s || !item) {
@@ -96,24 +98,30 @@ response_code push(stack s, char* item) {
 } 
 
 string_response pop(stack s) {
-    string_response response;
-    if (!s || is_empty(s)) {
-        response.code = stack_empty;
-        response.string = NULL;
-        return response;
+    if (is_empty(s)) {
+        return (string_response) {
+            stack_empty, NULL
+        };
     }
 
-    s->top--;
-    char* popped_item = s->elements[s->top];
+    char* popped = s->elements[--s->top];
+    s->elements[s->top] = NULL;
 
-    if (s->top > 0 && s->top <= s->capacity / 4) {
-        reallocate(s, s->capacity / 2);
+    if(s->top <= s->capacity / 4) {
+        int new_capacity = s->capacity / 2;
+
+        response_code result = reallocate(s,  new_capacity);
+        if (result != success) {
+            return (string_response) {
+                out_of_memory, NULL
+            };
+        }
     }
 
-    response.code = success;
-    response.string = popped_item;
-    return response;
-}        
+    return (string_response) {
+        success, popped
+    };
+}
 
 void destroy(stack* s) {
     if (!s || !*s) return;
@@ -126,4 +134,3 @@ void destroy(stack* s) {
     free(*s);
     *s = NULL;
 }   
-
