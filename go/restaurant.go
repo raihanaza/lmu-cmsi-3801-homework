@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"sync"
 	"time"
+	"sync/atomic"
 )
 
 // A little utility that simulates performing a task for a random duration.
