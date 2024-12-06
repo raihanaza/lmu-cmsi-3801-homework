@@ -17,5 +17,21 @@ func do(seconds int, action ...any) {
     time.Sleep(time.Duration(randomMillis) * time.Millisecond)
 }
 
+func cook(name string, waiter <-chan *Order) {
+	fmt.Printf("[%s] starting work\n", name)
+	for {
+		select {
+		case order, ok := <-waiter:
+			if !ok {
+				fmt.Printf("[%s] channel closed, stopping work\n", name)
+				return
+			}
+			doAction(10, name, "cooking", order.ID, "for", order.Customer)
+			order.PreparedBy = name
+			order.Reply <- order
+		}
+	}
+}
+
 // Implement the rest of the simulation here. You may need to add more imports
 // above.
