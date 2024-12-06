@@ -5,9 +5,7 @@ import (
 	"math/rand"
 	"sync"
 	"sync/atomic"
-	"sync"
 	"time"
-	"sync/atomic"
 )
 
 func do(seconds int, action ...any) {
@@ -36,7 +34,6 @@ func Cook(name string, waiter chan Order) {
 
 func Customer(name string, waiter chan Order, wg *sync.WaitGroup) {
 	defer wg.Done()
-	//wg.Add(1)
 
 	mealsEaten := 0
 	for mealsEaten < 5 {
@@ -56,7 +53,7 @@ func Customer(name string, waiter chan Order, wg *sync.WaitGroup) {
 			do(5, name, "waiting too long, abandoing order", order.id)
 		}
 	}
-	log.Println(name, "going home after eating 5 meals")
+	log.Println(name, "going home")
 }
 
 func main() {
@@ -64,8 +61,8 @@ func main() {
 	var wg sync.WaitGroup
 
 	go Cook("Remy", waiter)
-	go Cook("Linguini", waiter)
 	go Cook("Colette", waiter)
+	go Cook("Linguini", waiter)
 
 	customers := []string{"Ani", "Bai", "Cat", "Dao", "Eve", "Fay", "Gus", "Hua", "Iza", "Jai"}
 
