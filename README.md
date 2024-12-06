@@ -167,10 +167,21 @@
     - Returns the length of the stack as a usize (which is a number).
 
 ## Homework 5 (Concurrency) Submission
+**Go**
 
-TBD
+- do(seconds int, action ...any) 
+    - Simulates performing a task for a random duration. Computes a random number of milliseconds between 5000 and 10000, log the action, and sleep the current goroutine for that much time.
+- Order struct
+    - An order for a meal is placed by a customer and taken by a cook. An Order contains an id (uint64), the name of the customer (string) who placed the order, reply (chan Order) so that the cook can send the finished meal to the customer, and preparedBy (string) to contain the name of the chef that made the order.
+- cook(name string, waiter chan Order)
+    - A cook with a name (string) fetches orders from the waiter channel (chan Order) that contains orders, cooks the requested meal, and sends the meal back through the
+    order's reply channel.
+- customer(name string, waiter chan Order, wg *sync.WaitGroup)
+    - Each time a customer enters the restaurant, they place an order with the waiter. If the waiter is too busy (the waiter channel already contains 3 orders), the customer waits for 5 seconds before abandoning the order and placing another order. If the order does get placed, then they wait as long as necessary for the meal to be cooked and delivered. A customer leaves the restaurant and goes home after eating five meals.
+- main()
+    - This is a goroutine which performs the different function calls so that the restaurant can operate. The waiter channel is a buffered channel that can only contain 3 orders at a time. The waiter takes orders from customers and send them to the cook. The cook then sends the prepared meal back to the waiter who gives the meal to the customer.
 
-Go
+
 
 +1 Homework point because Cecilia helped Dr. Toal in-class by pointing out the Reset Button on A Tour of Go lecture on 12/2/2024. 
 

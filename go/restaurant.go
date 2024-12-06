@@ -23,7 +23,7 @@ type Order struct {
 
 var nextId uint64
 
-func Cook(name string, waiter chan Order) {
+func cook(name string, waiter chan Order) {
 	log.Println(name, "starting work")
 	for order := range waiter {
 		do(10, name, "cooking order", order.id, "for", order.customer)
@@ -32,7 +32,7 @@ func Cook(name string, waiter chan Order) {
 	}
 }
 
-func Customer(name string, waiter chan Order, wg *sync.WaitGroup) {
+func customer(name string, waiter chan Order, wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	mealsEaten := 0
@@ -60,15 +60,15 @@ func main() {
 	waiter := make(chan Order, 3)
 	var wg sync.WaitGroup
 
-	go Cook("Remy", waiter)
-	go Cook("Colette", waiter)
-	go Cook("Linguini", waiter)
+	go cook("Remy", waiter)
+	go cook("Colette", waiter)
+	go cook("Linguini", waiter)
 
 	customers := []string{"Ani", "Bai", "Cat", "Dao", "Eve", "Fay", "Gus", "Hua", "Iza", "Jai"}
 
-	for _, customer := range customers {
+	for _, customerName := range customers {
 		wg.Add(1)
-		go Customer(customer, waiter, &wg)
+		go customer(customerName, waiter, &wg)
 	}
 
 	wg.Wait()
